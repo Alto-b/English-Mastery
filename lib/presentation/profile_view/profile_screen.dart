@@ -35,124 +35,126 @@ class ProfileScreen extends StatelessWidget {
         }
       },
       child: Scaffold(
-        body: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.blueGrey.shade200, Colors.white],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
+        body: SafeArea(
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.blueGrey.shade200, Colors.white],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
             ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: Column(
-                    children: [
-                      const Gap(10),
-                      Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            icon: const Icon(Icons.arrow_back_ios),
-                          ),
-                        ],
-                      ),
-                      const Gap(20),
-                      Hero(
-                        tag: "UserAvatar",
-                        child: CircleAvatar(
-                          radius: 60,
-                          backgroundColor: Colors.grey.shade200,
-                          child: Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: ClipOval(
-                              child: RandomAvatar(
-                                state.userAvatar,
-                                trBackground: true,
-                                height: 120,
-                                width: 120,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: Column(
+                      children: [
+                        const Gap(10),
+                        Row(
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              icon: const Icon(Icons.arrow_back_ios),
+                            ),
+                          ],
+                        ),
+                        const Gap(20),
+                        Hero(
+                          tag: "UserAvatar",
+                          child: CircleAvatar(
+                            radius: 60,
+                            backgroundColor: Colors.grey.shade200,
+                            child: Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: ClipOval(
+                                child: RandomAvatar(
+                                  state.userAvatar,
+                                  trBackground: true,
+                                  height: 120,
+                                  width: 120,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 16),
-                      Text(
-                        state.userName,
-                        // style: Theme.of(context).textTheme.headline6!.copyWith(
-                        //       fontWeight: FontWeight.bold,
-                        //       color: Colors.black87,
-                        //     ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        state.userEmail,
-                        // style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                        //       color: Colors.grey.shade600,
-                        //     ),
-                      ),
-                    ],
+                        const SizedBox(height: 16),
+                        Text(
+                          state.userName,
+                          // style: Theme.of(context).textTheme.headline6!.copyWith(
+                          //       fontWeight: FontWeight.bold,
+                          //       color: Colors.black87,
+                          //     ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          state.userEmail,
+                          // style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                          //       color: Colors.grey.shade600,
+                          //     ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(height: 40),
-                Expanded(
-                  child: GridView.count(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 16.0,
-                    mainAxisSpacing: 16.0,
-                    childAspectRatio: 1, // Makes the tiles square
-                    padding: EdgeInsets.zero,
-                    children: [
-                      _buildGridTile(
-                        context,
-                        icon: Icons.account_circle_outlined,
-                        title: "Profile",
-                        tileSize: tileSize,
-                        onTap: () {
-                          // Add navigation to profile screen
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => EditProfileScreen(),
-                              ));
-                        },
-                      ),
-                      _buildGridTile(
-                        context,
-                        icon: Icons.settings_outlined,
-                        title: "Settings",
-                        tileSize: tileSize,
-                        onTap: () {
-                          // Add navigation to settings screen
-                        },
-                      ),
-                      _buildGridTile(
-                        context,
-                        icon: Icons.help_outline,
-                        title: "Help & Support",
-                        tileSize: tileSize,
-                        onTap: () {
-                          // Add navigation to help & support screen
-                        },
-                      ),
-                      _buildGridTile(
-                        context,
-                        icon: Icons.logout,
-                        title: "Logout",
-                        tileSize: tileSize,
-                        onTap: () {
-                          _showLogoutConfirmationDialog(context);
-                        },
-                      ),
-                    ],
+                  const SizedBox(height: 40),
+                  Expanded(
+                    child: GridView.count(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 16.0,
+                      mainAxisSpacing: 16.0,
+                      childAspectRatio: 1, // Makes the tiles square
+                      padding: EdgeInsets.zero,
+                      children: [
+                        _buildGridTile(
+                          context,
+                          icon: Icons.account_circle_outlined,
+                          title: "Profile",
+                          tileSize: tileSize,
+                          onTap: () {
+                            // Add navigation to profile screen
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => EditProfileScreen(),
+                                ));
+                          },
+                        ),
+                        _buildGridTile(
+                          context,
+                          icon: Icons.settings_outlined,
+                          title: "Settings",
+                          tileSize: tileSize,
+                          onTap: () {
+                            // Add navigation to settings screen
+                          },
+                        ),
+                        _buildGridTile(
+                          context,
+                          icon: Icons.help_outline,
+                          title: "Help & Support",
+                          tileSize: tileSize,
+                          onTap: () {
+                            // Add navigation to help & support screen
+                          },
+                        ),
+                        _buildGridTile(
+                          context,
+                          icon: Icons.logout,
+                          title: "Logout",
+                          tileSize: tileSize,
+                          onTap: () {
+                            _showLogoutConfirmationDialog(context);
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

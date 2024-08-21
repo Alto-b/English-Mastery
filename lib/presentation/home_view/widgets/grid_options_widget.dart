@@ -8,38 +8,43 @@ class GridOptionsContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Card(
-        elevation: 15,
-        shadowColor: Colors.blue,
-        shape: RoundedRectangleBorder(
+    // Calculate the height of a single grid item
+    double itemHeight = MediaQuery.of(context).size.width / 2 - 20;
+    // Calculate the number of rows needed
+    int rows = (6 / 2).ceil();
+    // Calculate the total height of the GridView
+    double gridHeight = itemHeight * rows + (8.0 * (rows - 1)) + 10;
+
+    return Card(
+      elevation: 15,
+      shadowColor: Colors.blue,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Container(
+        height: gridHeight,
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
+          border: const Border.symmetric(
+              horizontal: BorderSide(color: Colors.grey)),
         ),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            border: const Border.symmetric(
-                horizontal: BorderSide(color: Colors.grey)),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: GridView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: 6,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 8.0,
-                mainAxisSpacing: 8.0,
-                childAspectRatio: 1, // Square items
-              ),
-              itemBuilder: (context, index) => OptionBoxesWidget(
-                icon:
-                    const Icon(Icons.volume_up, color: Colors.white, size: 35),
-                title: 'Text to Speech $index',
-                onTap: () {
-                  // Define the action when the box is tapped
-                },
-              ),
+        child: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: GridView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: 6,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 8.0,
+              mainAxisSpacing: 8.0,
+              childAspectRatio: 1, // Square items
+            ),
+            itemBuilder: (context, index) => OptionBoxesWidget(
+              icon: const Icon(Icons.volume_up, color: Colors.white, size: 35),
+              title: 'Text to Speech $index',
+              onTap: () {
+                // Define the action when the box is tapped
+              },
             ),
           ),
         ),
