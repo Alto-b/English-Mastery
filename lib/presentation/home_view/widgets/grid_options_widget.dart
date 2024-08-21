@@ -10,7 +10,8 @@ class GridOptionsContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Card(
-        elevation: 4,
+        elevation: 15,
+        shadowColor: Colors.blue,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
@@ -72,7 +73,7 @@ class OptionBoxesWidget extends StatelessWidget {
           clipBehavior: Clip.antiAliasWithSaveLayer,
           margin: const EdgeInsets.all(4.0),
           decoration: BoxDecoration(
-            color: Colors.blue.shade200,
+            color: Colors.blue.shade300,
             borderRadius: BorderRadius.circular(15),
             boxShadow: const [
               BoxShadow(
@@ -88,7 +89,7 @@ class OptionBoxesWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 AvatarGlow(
-                    glowColor: Colors.white,
+                    glowColor: Colors.blue.shade200,
                     glowCount: 5,
                     glowShape: BoxShape.rectangle,
                     glowRadiusFactor: 15,

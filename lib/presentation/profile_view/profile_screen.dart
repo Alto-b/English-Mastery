@@ -84,17 +84,17 @@ class ProfileScreen extends StatelessWidget {
                       const SizedBox(height: 16),
                       Text(
                         state.userName,
-                        style: Theme.of(context).textTheme.headline6!.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black87,
-                            ),
+                        // style: Theme.of(context).textTheme.headline6!.copyWith(
+                        //       fontWeight: FontWeight.bold,
+                        //       color: Colors.black87,
+                        //     ),
                       ),
                       const SizedBox(height: 8),
                       Text(
                         state.userEmail,
-                        style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                              color: Colors.grey.shade600,
-                            ),
+                        // style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                        //       color: Colors.grey.shade600,
+                        //     ),
                       ),
                     ],
                   ),
@@ -255,10 +255,10 @@ class ProfileScreen extends StatelessWidget {
                 Text(
                   title,
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black87,
-                      ),
+                  // style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                  //       fontWeight: FontWeight.w600,
+                  //       color: Colors.black87,
+                  //     ),
                 ),
               ],
             ),
