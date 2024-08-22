@@ -37,7 +37,7 @@ class UserHomeCard extends StatelessWidget {
                 strokeAlign: BorderSide.strokeAlignInside),
             borderRadius: BorderRadius.circular(16),
           ),
-          elevation: 40,
+          elevation: 10,
           shadowColor: Colors.blue,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -75,7 +75,7 @@ class UserHomeCard extends StatelessWidget {
                         text: TextSpan(
                           children: [
                             const TextSpan(
-                              text: 'Hello ',
+                              text: 'Hello  ',
                               style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
