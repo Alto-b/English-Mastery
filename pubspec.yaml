@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.3.4 <4.0.0'
+  sdk: '>=3.2.3 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -40,7 +40,8 @@ dependencies:
   flutter_staggered_grid_view: ^0.7.0
   gap: ^3.0.1
   get: ^4.6.6
-  google_fonts: ^6.2.1
+  google_fonts: 
+  google_ml_kit: ^0.18.0
   lottie: ^3.1.2
   random_avatar: ^0.0.8
   shared_preferences: null
@@ -61,8 +62,9 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/loader/loader.json 
+    - assets/loader/loader.json
     - assets/logo/
+    - assets/testimage.png
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
