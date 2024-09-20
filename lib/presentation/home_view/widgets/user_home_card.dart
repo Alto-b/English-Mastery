@@ -37,7 +37,7 @@ class UserHomeCard extends StatelessWidget {
                 strokeAlign: BorderSide.strokeAlignInside),
             borderRadius: BorderRadius.circular(16),
           ),
-          elevation: 10,
+          elevation: 15,
           shadowColor: Colors.blue,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -54,7 +54,7 @@ class UserHomeCard extends StatelessWidget {
                         glowCount: 15,
                         glowShape: BoxShape.circle,
                         repeat: false,
-                        glowColor: Colors.blue.shade200,
+                        glowColor: Colors.blue.shade400,
                         child: RandomAvatar(
                           trBackground: true,
                           state.userAvatar,

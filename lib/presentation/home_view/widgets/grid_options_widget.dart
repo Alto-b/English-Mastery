@@ -2,9 +2,10 @@ import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 
 class GridOptionsContainer extends StatelessWidget {
-  const GridOptionsContainer({
+  GridOptionsContainer({
     super.key,
   });
+  List<String> title = ['Mock Test'];
 
   @override
   Widget build(BuildContext context) {
@@ -32,19 +33,33 @@ class GridOptionsContainer extends StatelessWidget {
           padding: const EdgeInsets.all(5.0),
           child: GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: 6,
+            itemCount: 5,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
+              crossAxisCount: 1,
               crossAxisSpacing: 8.0,
               mainAxisSpacing: 8.0,
-              childAspectRatio: 1, // Square items
+              childAspectRatio: 30 / 9, // Square items
             ),
-            itemBuilder: (context, index) => OptionBoxesWidget(
-              icon: const Icon(Icons.volume_up, color: Colors.white, size: 35),
-              title: 'Text to Speech $index',
-              onTap: () {
-                // Define the action when the box is tapped
-              },
+            // itemBuilder: (context, index) => OptionBoxesWidget(
+            //   icon: const Icon(Icons.volume_up, color: Colors.white, size: 35),
+            //   title: 'Text to Speech ${index + 1}',
+            //   onTap: () {
+            //     // Define the action when the box is tapped
+            //   },
+            // ),
+            itemBuilder: (context, index) => Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListTile(
+                titleAlignment: ListTileTitleAlignment.center,
+                tileColor: Colors.amber,
+                title: Text('Text to Speech ${index + 1}'),
+                subtitle: Text("aaaaaaaaaaaa"),
+                leading: Icon(Icons.abc),
+                trailing: Icon(Icons.arrow_forward_ios_outlined),
+                onTap: () {},
+                shape: ContinuousRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+              ),
             ),
           ),
         ),
