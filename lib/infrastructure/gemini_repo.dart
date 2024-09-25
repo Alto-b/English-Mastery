@@ -39,14 +39,15 @@ class GeminiRepo {
               }
             ]
           });
+
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
         return response
             .data['candidates'].first['content']['parts'].first['text'];
       }
-      return '';
+      return 'Error: No content generated';
     } catch (e) {
       debugPrint(e.toString());
-      return '';
+      return 'Error: API request failed';
     }
   }
 }

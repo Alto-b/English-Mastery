@@ -1,5 +1,6 @@
 import 'package:english_mastery/application/gemini_bloc/gemini_bloc.dart';
 import 'package:english_mastery/domain/gemini_model.dart';
+import 'package:english_mastery/infrastructure/gemini_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
@@ -15,14 +16,15 @@ class GeminiPage extends StatefulWidget {
 
 class _GeminiPageState extends State<GeminiPage> {
   final TextEditingController textEditingController = TextEditingController();
-  final GeminiBloc geminiBloc = GeminiBloc();
   final ScrollController chatScrollController = ScrollController();
 
+  late GeminiBloc geminiBloc;
   String? userAvatar;
 
   @override
   void initState() {
     super.initState();
+    geminiBloc = GeminiBloc(geminiRepo: GeminiRepo());
     _loadUserAvatar();
   }
 
@@ -59,7 +61,7 @@ class _GeminiPageState extends State<GeminiPage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
-        title: Text("Gemini AI"),
+        title: const Text("Mastery AI"),
       ),
       body: SafeArea(
         child: Column(

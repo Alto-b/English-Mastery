@@ -1,9 +1,9 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 class GeminiMessageModel {
   final String role;
   final List<GeminiPartModel> parts;
+
   GeminiMessageModel({
     required this.role,
     required this.parts,
@@ -32,6 +32,7 @@ class GeminiMessageModel {
 
 class GeminiPartModel {
   final String text;
+
   GeminiPartModel({
     required this.text,
   });

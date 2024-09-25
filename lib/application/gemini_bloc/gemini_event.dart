@@ -7,16 +7,11 @@ sealed class GeminiEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class ChatGenerateNewTextMessageEvent extends GeminiEvent{
+class ChatGenerateNewTextMessageEvent extends GeminiEvent {
   final String inputMessage;
-  const ChatGenerateNewTextMessageEvent({required this.inputMessage});
-}
-// @immutable
-// sealed class GeminiEvent {}
 
-// class ChatGenerateNewTextEvent extends GeminiEvent {
-//   final String inputMessage;
-//   ChatGenerateNewTextEvent({
-//     required this.inputMessage,
-//   });
-// }
+  const ChatGenerateNewTextMessageEvent({required this.inputMessage});
+
+  @override
+  List<Object> get props => [inputMessage];
+}
