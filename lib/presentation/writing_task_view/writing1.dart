@@ -1,5 +1,5 @@
-import 'dart:developer';
 import 'package:english_mastery/application/writing_bloc/writing_bloc.dart';
+import 'package:english_mastery/presentation/answer_view/writing_answer_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -14,6 +14,13 @@ class Writing1View extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Writing 1"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Get.to(() => WritingAnswerView());
+              },
+              icon: Icon(Icons.abc))
+        ],
       ),
       body: BlocBuilder<WritingBloc, WritingState>(
         builder: (context, state) {

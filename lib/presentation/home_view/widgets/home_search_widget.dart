@@ -1,5 +1,5 @@
 import 'package:avatar_glow/avatar_glow.dart';
-import 'package:english_mastery/presentation/gemini/gemini.dart';
+import 'package:english_mastery/presentation/gemini_view/gemini.dart';
 import 'package:flutter/material.dart';
 
 class HomeSearchWidget extends StatelessWidget {
