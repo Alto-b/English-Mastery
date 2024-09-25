@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class WritingAnswerView extends StatefulWidget {
-  WritingAnswerView({super.key});
+  WritingAnswerView({super.key, this.pageTitle});
 
   @override
   _WritingAnswerViewState createState() => _WritingAnswerViewState();
+  final pageTitle;
 }
 
 class _WritingAnswerViewState extends State<WritingAnswerView> {
@@ -43,7 +44,7 @@ class _WritingAnswerViewState extends State<WritingAnswerView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Answer View"),
+        title: Text("${widget.pageTitle}"),
       ),
       body: Column(
         children: [
@@ -71,9 +72,16 @@ class _WritingAnswerViewState extends State<WritingAnswerView> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: Text("$wordCount words"),
+          Align(
+            alignment: Alignment.centerRight,
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 18),
+              child: Text(
+                "$wordCount words",
+                style: TextStyle(color: Colors.blueGrey),
+              ),
+            ),
           ),
           Container(
             width: double.infinity,

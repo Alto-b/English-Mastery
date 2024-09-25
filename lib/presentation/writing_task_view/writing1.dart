@@ -4,22 +4,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 class Writing1View extends StatelessWidget {
   const Writing1View({super.key});
-
+  final title = "Writing Task 1";
   @override
   Widget build(BuildContext context) {
     context.read<WritingBloc>().add(Writing1GenerateTaskEvent());
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Writing 1"),
+        title: Text(title),
         actions: [
           IconButton(
               onPressed: () {
-                Get.to(() => WritingAnswerView());
+                Get.to(() => WritingAnswerView(
+                      pageTitle: title,
+                    ));
               },
-              icon: Icon(Icons.abc))
+              icon: const Icon(Icons.abc))
         ],
       ),
       body: BlocBuilder<WritingBloc, WritingState>(
@@ -90,7 +93,7 @@ class Writing1View extends StatelessWidget {
                           ),
                           const Gap(20),
                           ExpansionTile(
-                            trailing: Icon(Icons.add_circle_outline),
+                            trailing: const Icon(Icons.add_circle_outline),
                             title: const Text("Sample Solution:"),
                             children: [
                               Padding(
@@ -126,7 +129,7 @@ class Writing1View extends StatelessWidget {
                     children: [
                       ElevatedButton.icon(
                         style: ButtonStyle(
-                          elevation: MaterialStatePropertyAll(5),
+                          elevation: const MaterialStatePropertyAll(5),
                           shape: MaterialStatePropertyAll(
                             ContinuousRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
@@ -138,14 +141,14 @@ class Writing1View extends StatelessWidget {
                               .read<WritingBloc>()
                               .add(Writing1GenerateTaskEvent());
                         },
-                        icon: Icon(Icons.autorenew),
-                        label: Text("Generate Question"),
+                        icon: const Icon(Icons.autorenew),
+                        label: const Text("Generate Question"),
                       ),
                       ElevatedButton.icon(
                         style: ButtonStyle(
                           backgroundColor:
-                              MaterialStatePropertyAll(Colors.green),
-                          elevation: MaterialStatePropertyAll(5),
+                              const MaterialStatePropertyAll(Colors.green),
+                          elevation: const MaterialStatePropertyAll(5),
                           shape: MaterialStatePropertyAll(
                             ContinuousRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
@@ -153,21 +156,39 @@ class Writing1View extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {},
-                        icon: Icon(Icons.send),
-                        label: Text("Submit Answer"),
+                        icon: const Icon(Icons.send),
+                        label: const Text("Submit Answer"),
                       ),
                     ],
                   ),
                 ),
-                Gap(10)
+                const Gap(10)
               ],
             );
           }
           if (state is WritingErrorState) {
             return Center(
-              child: Text(
-                state.message,
-                style: const TextStyle(color: Colors.red),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Lottie.asset('assets/loader/failed.json', height: 250),
+                  Gap(20),
+                  Text(
+                    state.message,
+                    style: TextStyle(
+                        color: Colors.grey.withOpacity(0.8),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700),
+                  ),
+                  Gap(20),
+                  IconButton(
+                      onPressed: () {
+                        context
+                            .read<WritingBloc>()
+                            .add(Writing1GenerateTaskEvent());
+                      },
+                      icon: Icon(Icons.replay_outlined))
+                ],
               ),
             );
           }
