@@ -43,3 +43,5 @@ app.*.map.json
 /android/app/release
 api.dart
 env.dart
+english_mastery_key.pem
+urls.dart
