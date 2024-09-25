@@ -155,7 +155,11 @@ class Writing1View extends StatelessWidget {
                             ),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(() => WritingAnswerView(
+                                pageTitle: title,
+                              ));
+                        },
                         icon: const Icon(Icons.send),
                         label: const Text("Submit Answer"),
                       ),
