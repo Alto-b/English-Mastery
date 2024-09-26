@@ -1,4 +1,8 @@
+import 'package:english_mastery/application/writing_bloc/writing_bloc.dart';
+import 'package:english_mastery/presentation/result_view/writing_result_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class WritingAnswerView extends StatefulWidget {
   WritingAnswerView({super.key, this.pageTitle});
@@ -99,6 +103,18 @@ class _WritingAnswerViewState extends State<WritingAnswerView> {
                 ),
                 onPressed: () {
                   // Handle the submit action here
+                  if (answerController.text.length != 0) {
+                    // context.read<WritingBloc>().add(Writing1CheckGrammerEvent(
+                    //     user_input: answerController.text.trim()));
+                    Get.to(() => WritingResultView(
+                          title: widget.pageTitle,
+                          user_answer: answerController.text.trim(),
+                        ));
+                  } else {
+                    Get.snackbar("Oops!", "Enter answer to proceed",
+                        backgroundColor: Colors.red.withOpacity(0.8),
+                        colorText: Colors.white);
+                  }
                 },
                 icon: Icon(Icons.send),
                 label: Text("Submit Answer"),

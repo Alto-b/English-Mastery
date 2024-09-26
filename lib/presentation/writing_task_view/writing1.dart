@@ -1,6 +1,7 @@
 import 'package:english_mastery/application/writing_bloc/writing_bloc.dart';
 import 'package:english_mastery/presentation/answer_view/writing_answer_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -99,14 +100,36 @@ class Writing1View extends StatelessWidget {
                               Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Text(
-                                  state.writing1generateTaskModel.first
-                                          .sampleAnswer ??
-                                      "",
-                                  style: const TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15,
-                                    letterSpacing: 2,
+                                child: InkWell(
+                                  // onTap: () {
+                                  //   Get.snackbar('!', "Long press to copy",
+                                  //       snackPosition: SnackPosition.BOTTOM,
+                                  //       duration: const Duration(seconds: 2),
+                                  //       isDismissible: true,
+                                  //       animationDuration:
+                                  //           const Duration(seconds: 1),
+                                  //       borderRadius: 15,
+                                  //       icon: const Icon(Icons.notifications),
+                                  //       backgroundColor: Colors.blueGrey,
+                                  //       colorText: Colors.white,
+                                  //       margin: const EdgeInsets.only(
+                                  //           bottom: 10, left: 5, right: 5));
+                                  // },
+                                  onLongPress: () {
+                                    Clipboard.setData(ClipboardData(
+                                        text: state.writing1generateTaskModel
+                                                .first.sampleAnswer ??
+                                            ""));
+                                  },
+                                  child: Text(
+                                    state.writing1generateTaskModel.first
+                                            .sampleAnswer ??
+                                        "",
+                                    style: const TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 15,
+                                      letterSpacing: 2,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -196,7 +219,30 @@ class Writing1View extends StatelessWidget {
               ),
             );
           }
-          return const Center(child: CircularProgressIndicator());
+          return Center(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CircularProgressIndicator(),
+              Gap(25),
+              ElevatedButton.icon(
+                style: ButtonStyle(
+                  elevation: const MaterialStatePropertyAll(5),
+                  shape: MaterialStatePropertyAll(
+                    ContinuousRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                ),
+                onPressed: () {
+                  context.read<WritingBloc>().add(Writing1GenerateTaskEvent());
+                },
+                icon: const Icon(Icons.autorenew),
+                label: const Text("Generate Question"),
+              ),
+            ],
+          ));
         },
       ),
     );

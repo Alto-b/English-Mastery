@@ -17,6 +17,32 @@ class Writing1GenerateTaskSuccessState extends WritingState {
   List<Object> get props => [writing1generateTaskModel];
 }
 
+class Writing1CheckGrammarSuccessState extends WritingState {
+  final Writing1CheckGrammarModel writing1CheckGrammarModel;
+
+  Writing1CheckGrammarSuccessState({required this.writing1CheckGrammarModel});
+  @override
+  List<Object> get props => [writing1CheckGrammarModel];
+}
+
+class Writing1EvaluateSuccessState extends WritingState {
+  final Writing1EvaluateModel writing1evaluateModel;
+
+  Writing1EvaluateSuccessState({required this.writing1evaluateModel});
+  @override
+  List<Object> get props => [writing1evaluateModel];
+}
+
+class Writing1OutPutSuccessState extends WritingState {
+  final Writing1CheckGrammarModel writing1CheckGrammarModel;
+  final Writing1EvaluateModel writing1evaluateModel;
+
+  Writing1OutPutSuccessState(
+      this.writing1CheckGrammarModel, this.writing1evaluateModel);
+  @override
+  List<Object> get props => [writing1CheckGrammarModel, writing1evaluateModel];
+}
+
 class WritingErrorState extends WritingState {
   final String message;
 
