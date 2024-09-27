@@ -41,8 +41,8 @@ class HomeSuccessStateWidget extends StatelessWidget {
             unselectedLabelStyle:
                 TextStyle(fontWeight: FontWeight.w400, fontSize: 15),
             tabs: [
-              Tab(text: "Practice"),
-              Tab(text: "Mock test"),
+              Tab(text: "IELTS"),
+              Tab(text: "General"),
             ],
           ),
         ),

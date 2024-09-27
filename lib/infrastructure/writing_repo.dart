@@ -1,8 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:english_mastery/domain/writing1/writing1_check_model.dart';
-import 'package:english_mastery/domain/writing1/writing1_evaluate_model.dart';
-import 'package:english_mastery/domain/writing1/writing1_generate_model.dart';
+import 'package:english_mastery/domain/writing/writing_check_model.dart';
+import 'package:english_mastery/domain/writing/writing_evaluate_model.dart';
+import 'package:english_mastery/domain/writing/writing1_generate_model.dart';
+import 'package:english_mastery/domain/writing/writing2_generate_model.dart';
 import 'package:english_mastery/env.dart';
 import 'package:english_mastery/urls.dart';
 import 'package:http/http.dart' as http;
@@ -22,6 +23,32 @@ class Writing1Repo {
 
         // Create and return the model from the response data
         return Writing1GenerateTaskModel.fromJson(responseData);
+      } else {
+        // Handle non-200 responses, if necessary
+        print('Failed to fetch data: ${response.statusCode}');
+        return null;
+      }
+    } catch (e) {
+      // Handle any errors that occur during the request
+      print('Error: $e');
+      return null;
+    }
+  }
+
+  Future<Writing2GenerateModel?> writing2_generate_task() async {
+    try {
+      final response = await http.get(
+        Uri.parse("${Env.host}${URLs.writing2_generate_task}"),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        final responseData = jsonDecode(response.body);
+
+        // Create and return the model from the response data
+        return Writing2GenerateModel.fromJson(responseData);
       } else {
         // Handle non-200 responses, if necessary
         print('Failed to fetch data: ${response.statusCode}');

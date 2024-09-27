@@ -1,7 +1,9 @@
 import 'dart:developer';
 
 import 'package:english_mastery/presentation/home_view/widgets/home_search_widget.dart';
+import 'package:english_mastery/presentation/speaking_view/speaking_screen.dart';
 import 'package:english_mastery/presentation/writing_task_view/writing1.dart';
+import 'package:english_mastery/presentation/writing_task_view/writing2.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -23,7 +25,11 @@ class PracticeTestTabView extends StatelessWidget {
         "icon": Icons.headphones,
         "onClick": () => onClickTest(2)
       },
-      {"title": "Speaking", "icon": Icons.mic, "onClick": () => onClickTest(3)},
+      {
+        "title": "Speaking",
+        "icon": Icons.mic,
+        "onClick": () => Get.to(() => SpeakingView())
+      },
     ];
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
@@ -81,19 +87,20 @@ class PracticeTestTabView extends StatelessWidget {
           children: [
             ListTile(
               leading: Icon(Icons.abc),
-              title: Text('Writng1'),
+              title: Text('Writing 1'),
               onTap: () {
                 // Handle share action
-                Get.to(() =>
-                    Writing1View()); // Close the bottom sheet after action
+                Get.back(); // Close the bottom sheet after action
+                Get.to(() => Writing1View());
               },
             ),
             ListTile(
               leading: Icon(Icons.abc),
-              title: Text('Writing2'),
+              title: Text('Writing 2'),
               onTap: () {
                 // Handle get link action
                 Get.back(); // Close the bottom sheet after action
+                Get.to(() => Writing2View());
               },
             ),
           ],

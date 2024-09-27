@@ -8,12 +8,12 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
-class Writing1View extends StatelessWidget {
-  const Writing1View({super.key});
-  final title = "Writing Task 1";
+class Writing2View extends StatelessWidget {
+  const Writing2View({super.key});
+  final title = "Writing Task 2";
   @override
   Widget build(BuildContext context) {
-    context.read<WritingBloc>().add(Writing1GenerateTaskEvent());
+    context.read<WritingBloc>().add(Writing2GenerateTaskEvent());
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -29,7 +29,7 @@ class Writing1View extends StatelessWidget {
       ),
       body: BlocBuilder<WritingBloc, WritingState>(
         builder: (context, state) {
-          if (state is Writing1GenerateTaskSuccessState) {
+          if (state is Writing2GenerateTaskSuccessState) {
             return Column(
               children: [
                 Expanded(
@@ -41,7 +41,7 @@ class Writing1View extends StatelessWidget {
                         children: [
                           const Gap(20),
                           Text(
-                            splitWritingTask(state.writing1generateTaskModel
+                            splitWritingTask(state.writing2generateTaskModel
                                         .first.question ??
                                     "")
                                 .first,
@@ -52,12 +52,13 @@ class Writing1View extends StatelessWidget {
                             ),
                           ),
                           const Gap(20),
-                          Text(
-                            splitWritingTask(state.writing1generateTaskModel
-                                        .first.question ??
-                                    "")
-                                .last,
-                            style: const TextStyle(
+                          const Text(
+                            "Write at least 250 words.",
+                            // splitWritingTask(state.writing2generateTaskModel
+                            //             .first.question ??
+                            //         "")
+                            //     .last,
+                            style: TextStyle(
                               color: Colors.grey,
                               fontSize: 15,
                               letterSpacing: 2,
@@ -66,7 +67,7 @@ class Writing1View extends StatelessWidget {
                           const Gap(20),
                           Text(
                             splitWritingTask(state
-                                    .writing1generateTaskModel.first.question ??
+                                    .writing2generateTaskModel.first.question ??
                                 "")[1],
                             style: const TextStyle(
                               fontSize: 20,
@@ -76,23 +77,27 @@ class Writing1View extends StatelessWidget {
                             ),
                           ),
                           const Gap(30),
-                          Center(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(
-                                  15), // Rounded corners for the image
-                              child: Image.network(
-                                state.writing1generateTaskModel.first
-                                        .imageUrl ??
-                                    "",
-                                fit: BoxFit.cover, // Better image fit
-                                errorBuilder: (context, error, stackTrace) =>
-                                    const Text(
-                                  'Image not available',
-                                  style: TextStyle(color: Colors.red),
-                                ),
-                              ),
-                            ),
-                          ),
+                          (state.writing2generateTaskModel.first.imageUrl !=
+                                  null)
+                              ? Center(
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(
+                                        15), // Rounded corners for the image
+                                    child: Image.network(
+                                      state.writing2generateTaskModel.first
+                                              .imageUrl ??
+                                          "",
+                                      fit: BoxFit.cover, // Better image fit
+                                      errorBuilder:
+                                          (context, error, stackTrace) =>
+                                              const Text(
+                                        'Image not available',
+                                        style: TextStyle(color: Colors.red),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : const SizedBox.shrink(),
                           const Gap(20),
                           ExpansionTile(
                             trailing: const Icon(Icons.add_circle_outline),
@@ -118,12 +123,12 @@ class Writing1View extends StatelessWidget {
                                   // },
                                   onLongPress: () {
                                     Clipboard.setData(ClipboardData(
-                                        text: state.writing1generateTaskModel
+                                        text: state.writing2generateTaskModel
                                                 .first.sampleAnswer ??
                                             ""));
                                   },
                                   child: Text(
-                                    state.writing1generateTaskModel.first
+                                    state.writing2generateTaskModel.first
                                             .sampleAnswer ??
                                         "",
                                     style: const TextStyle(
@@ -200,7 +205,7 @@ class Writing1View extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Lottie.asset('assets/loader/failed.json', height: 250),
-                  Gap(20),
+                  const Gap(20),
                   Text(
                     state.message,
                     style: TextStyle(
@@ -208,14 +213,14 @@ class Writing1View extends StatelessWidget {
                         fontSize: 20,
                         fontWeight: FontWeight.w700),
                   ),
-                  Gap(20),
+                  const Gap(20),
                   IconButton(
                       onPressed: () {
                         context
                             .read<WritingBloc>()
                             .add(Writing1GenerateTaskEvent());
                       },
-                      icon: Icon(Icons.replay_outlined))
+                      icon: const Icon(Icons.replay_outlined))
                 ],
               ),
             );
@@ -225,8 +230,8 @@ class Writing1View extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CircularProgressIndicator(),
-              Gap(25),
+              const CircularProgressIndicator(),
+              const Gap(25),
               ElevatedButton.icon(
                 style: ButtonStyle(
                   elevation: const MaterialStatePropertyAll(5),
@@ -237,7 +242,7 @@ class Writing1View extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  context.read<WritingBloc>().add(Writing1GenerateTaskEvent());
+                  context.read<WritingBloc>().add(Writing2GenerateTaskEvent());
                 },
                 icon: const Icon(Icons.autorenew),
                 label: const Text("Generate Question"),

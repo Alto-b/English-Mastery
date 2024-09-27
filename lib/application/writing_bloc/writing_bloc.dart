@@ -1,9 +1,10 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:english_mastery/domain/writing1/writing1_check_model.dart';
-import 'package:english_mastery/domain/writing1/writing1_evaluate_model.dart';
-import 'package:english_mastery/domain/writing1/writing1_generate_model.dart';
-import 'package:english_mastery/infrastructure/writing1_repo.dart';
+import 'package:english_mastery/domain/writing/writing2_generate_model.dart';
+import 'package:english_mastery/domain/writing/writing_check_model.dart';
+import 'package:english_mastery/domain/writing/writing_evaluate_model.dart';
+import 'package:english_mastery/domain/writing/writing1_generate_model.dart';
+import 'package:english_mastery/infrastructure/writing_repo.dart';
 import 'package:equatable/equatable.dart';
 
 part 'writing_event.dart';
@@ -18,6 +19,7 @@ class WritingBloc extends Bloc<WritingEvent, WritingState> {
     // on<Writing1CheckGrammerEvent>(_writing1CheckGrammerMerthod);
     // on<Writing1EvaluateEvent>(_writing1EvaluateMethod);
     on<Writing1OutputEvent>(_writing1OutputMethod);
+    on<Writing2GenerateTaskEvent>(_writing2GenerateTaskMethod);
   }
 
   FutureOr<void> _writing1GenerateTaskMethod(
@@ -87,6 +89,28 @@ class WritingBloc extends Bloc<WritingEvent, WritingState> {
       emit(Writing1OutPutSuccessState(grammerModel!, EvaluateModel!));
     } catch (e) {
       emit(WritingErrorState(message: 'Failed to evaluate the answer: ${e}'));
+    }
+  }
+
+  FutureOr<void> _writing2GenerateTaskMethod(
+      Writing2GenerateTaskEvent event, Emitter<WritingState> emit) async {
+    try {
+      // Fetch the generated task from the repository
+      final Writing2GenerateModel? taskModel =
+          await writing1Repo.writing2_generate_task();
+
+      if (taskModel != null) {
+        // Emit success state with the fetched task
+        emit(Writing2GenerateTaskSuccessState(
+            writing2generateTaskModel: [taskModel]));
+      } else {
+        // Emit error state if the task model is null
+        emit(WritingErrorState(message: 'Failed to generate writing task 2'));
+      }
+    } catch (error) {
+      // Emit error state if an exception occurs
+      emit(WritingErrorState(
+          message: 'Failed to generate writing task 2 : ${error}'));
     }
   }
 }

@@ -1,9 +1,10 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:english_mastery/application/home_bloc/home_bloc.dart';
 import 'package:english_mastery/application/profile_setup_bloc/profile_setup_bloc.dart';
+import 'package:english_mastery/application/speaking_bloc/speaking_bloc.dart';
 import 'package:english_mastery/application/splash_bloc/splash_bloc.dart';
 import 'package:english_mastery/application/writing_bloc/writing_bloc.dart';
-import 'package:english_mastery/infrastructure/writing1_repo.dart';
+import 'package:english_mastery/infrastructure/writing_repo.dart';
 import 'package:english_mastery/presentation/splash_view/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptiveTheme(
-      debugShowFloatingThemeButton: true,
+      //debugShowFloatingThemeButton: true,
       light: ThemeData.light(useMaterial3: false),
       dark: ThemeData.dark(useMaterial3: false),
       initial: AdaptiveThemeMode.light,
@@ -45,13 +46,16 @@ class MyApp extends StatelessWidget {
                 writing1Repo: context.read<Writing1Repo>(),
               ),
             ),
+            BlocProvider(
+              create: (context) => SpeakingBloc(),
+            ),
           ],
           child: GetMaterialApp(
             title: 'English Mastery',
             debugShowCheckedModeBanner: false,
             theme: theme,
             darkTheme: darkTheme,
-            home: SplashScreenView(),
+            home: const SplashScreenView(),
           ),
         ),
       ),
