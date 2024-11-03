@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-class PracticeTestTabView extends StatelessWidget {
-  PracticeTestTabView({super.key});
+class IELTSTestTabView extends StatelessWidget {
+  IELTSTestTabView({super.key});
 
   @override
   Widget build(BuildContext context) {

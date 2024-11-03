@@ -47,8 +47,8 @@ class HomeSuccessStateWidget extends StatelessWidget {
           ),
         ),
         body: TabBarView(children: [
-          PracticeTestTabView(),
-          MockTestTabView(),
+          IELTSTestTabView(),
+          GeneralTestTabView(),
         ]),
       ),
     );
