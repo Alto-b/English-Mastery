@@ -8,7 +8,8 @@ class SpeakingEvent extends Equatable {
   List<Object> get props => [];
 }
 
-// Specific event subclasses
+class RecordingInitial extends SpeakingEvent {}
+
 class StartRecording extends SpeakingEvent {}
 
 class StopRecording extends SpeakingEvent {}
@@ -24,4 +25,12 @@ class PlayRecording extends SpeakingEvent {
 
   @override
   List<Object> get props => [filePath];
+}
+
+class GenerateSpeakingQuestion extends SpeakingEvent {
+  final String question;
+
+  GenerateSpeakingQuestion({required this.question});
+  @override
+  List<Object> get props => [question];
 }

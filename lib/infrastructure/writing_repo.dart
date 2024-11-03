@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:convert';
 import 'dart:developer';
 import 'package:english_mastery/domain/writing/writing_check_model.dart';
@@ -6,6 +8,7 @@ import 'package:english_mastery/domain/writing/writing1_generate_model.dart';
 import 'package:english_mastery/domain/writing/writing2_generate_model.dart';
 import 'package:english_mastery/env.dart';
 import 'package:english_mastery/urls.dart';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 class Writing1Repo {
@@ -25,12 +28,16 @@ class Writing1Repo {
         return Writing1GenerateTaskModel.fromJson(responseData);
       } else {
         // Handle non-200 responses, if necessary
-        print('Failed to fetch data: ${response.statusCode}');
+        if (kDebugMode) {
+          print('Failed to fetch data: ${response.statusCode}');
+        }
         return null;
       }
     } catch (e) {
       // Handle any errors that occur during the request
-      print('Error: $e');
+      if (kDebugMode) {
+        print('Error: $e');
+      }
       return null;
     }
   }
@@ -70,10 +77,10 @@ class Writing1Repo {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: jsonEncode({"user_answer": "${user_input}"}));
+          body: jsonEncode({"user_answer": user_input}));
       if (response.statusCode == 200) {
         final jsonData = await jsonDecode(response.body);
-        log("${jsonData}", name: "writing1checkgrammar");
+        log("$jsonData", name: "writing1checkgrammar");
         return Writing1CheckGrammarModel.fromJson(jsonData);
       } else {
         // Handle non-200 responses, if necessary
@@ -92,7 +99,7 @@ class Writing1Repo {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: jsonEncode({"user_answer": "${user_input}"}));
+          body: jsonEncode({"user_answer": "$user_input"}));
       if (response.statusCode == 200) {
         final jsonData = await jsonDecode(response.body);
         return Writing1EvaluateModel.fromJson(jsonData);

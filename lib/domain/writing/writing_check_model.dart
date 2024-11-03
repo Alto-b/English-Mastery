@@ -69,11 +69,11 @@ class GrammarResult {
         "software": software?.toJson(),
         "warnings": warnings?.toJson(),
         "language": language?.toJson(),
-        "matches": matches.map((x) => x?.toJson()).toList(),
+        "matches": matches.map((x) => x.toJson()).toList(),
         "sentenceRanges":
             sentenceRanges.map((x) => x.map((x) => x).toList()).toList(),
         "extendedSentenceRanges":
-            extendedSentenceRanges.map((x) => x?.toJson()).toList(),
+            extendedSentenceRanges.map((x) => x.toJson()).toList(),
       };
 }
 
@@ -102,7 +102,7 @@ class ExtendedSentenceRange {
   Map<String, dynamic> toJson() => {
         "from": from,
         "to": to,
-        "detectedLanguages": detectedLanguages.map((x) => x?.toJson()).toList(),
+        "detectedLanguages": detectedLanguages.map((x) => x.toJson()).toList(),
       };
 }
 
@@ -236,7 +236,7 @@ class Match {
   Map<String, dynamic> toJson() => {
         "message": message,
         "shortMessage": shortMessage,
-        "replacements": replacements.map((x) => x?.toJson()).toList(),
+        "replacements": replacements.map((x) => x.toJson()).toList(),
         "offset": offset,
         "length": length,
         "context": context?.toJson(),
@@ -342,7 +342,7 @@ class Rule {
         "confidence": confidence,
         "subId": subId,
         "sourceFile": sourceFile,
-        "urls": urls.map((x) => x?.toJson()).toList(),
+        "urls": urls.map((x) => x.toJson()).toList(),
       };
 }
 

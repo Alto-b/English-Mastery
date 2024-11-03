@@ -123,9 +123,7 @@ class WordOfTheDayRepo {
     "Cajole":
         "Persuade someone to do something by sustained coaxing or flattery.",
     "Deft": "Neatly skillful and quick in one's movements.",
-    "Ebullient": "Cheerful and full of energy.",
     "Fatuous": "Silly and pointless.",
-    "Garrulous": "Excessively talkative, especially on trivial matters.",
     "Hubris": "Excessive pride or self-confidence.",
     "Impetuous": "Acting or done quickly and without thought or care.",
     "Juxtapose": "Place or deal with close together for contrasting effect.",
@@ -136,11 +134,8 @@ class WordOfTheDayRepo {
     "Ostensible": "Stated or appearing to be true, but not necessarily so.",
     "Pithy": "Concise and forcefully expressive.",
     "Quotidian": "Of or occurring every day; daily.",
-    "Recalcitrant":
-        "Having an obstinately uncooperative attitude towards authority or discipline.",
     "Soporific": "Tending to induce drowsiness or sleep.",
     "Taciturn": "Reserved or uncommunicative in speech; saying little.",
-    "Ubiquitous": "Present, appearing, or found everywhere.",
     "Vociferous": "Vehement or clamorous.",
     "Waft":
         "Pass or cause to pass easily or gently through or as if through the air.",

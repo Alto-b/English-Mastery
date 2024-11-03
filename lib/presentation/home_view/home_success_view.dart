@@ -46,7 +46,7 @@ class HomeSuccessStateWidget extends StatelessWidget {
             ],
           ),
         ),
-        body: const TabBarView(children: [
+        body: TabBarView(children: [
           PracticeTestTabView(),
           MockTestTabView(),
         ]),

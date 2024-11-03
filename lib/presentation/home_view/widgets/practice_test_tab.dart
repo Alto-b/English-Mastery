@@ -1,7 +1,8 @@
 import 'dart:developer';
 
+import 'package:english_mastery/domain/word_of_the_day_model.dart';
 import 'package:english_mastery/presentation/home_view/widgets/home_search_widget.dart';
-import 'package:english_mastery/presentation/speaking_view/speaking_screen.dart';
+import 'package:english_mastery/presentation/speaking_view/speaking_view.dart';
 import 'package:english_mastery/presentation/writing_task_view/writing1.dart';
 import 'package:english_mastery/presentation/writing_task_view/writing2.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 class PracticeTestTabView extends StatelessWidget {
-  const PracticeTestTabView({super.key});
+  PracticeTestTabView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,44 +29,51 @@ class PracticeTestTabView extends StatelessWidget {
       {
         "title": "Speaking",
         "icon": Icons.mic,
-        "onClick": () => Get.to(() => SpeakingView())
+        "onClick": () => Get.to(() => SpeakingScreenView())
       },
     ];
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
+    WordOfTheDayModel model = WordOfTheDayModel();
+    MapEntry<String, String> randomWord = model.getWordOfTheDay();
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            const Gap(20),
-            HomeSearchWidget(
-                screenHeight: screenHeight, screenWidth: screenWidth),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
-              child: SizedBox(
-                // color: Colors.amber,
-                height: screenHeight / 2,
-                child: GridView.builder(
-                  itemCount: tileList.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 25,
-                    mainAxisSpacing: 25.0,
-                    childAspectRatio: 1, // Adjust the aspect ratio as needed
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              const Gap(20),
+              HomeSearchWidget(
+                  screenHeight: screenHeight, screenWidth: screenWidth),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0, vertical: 24.0),
+                child: SizedBox(
+                  // color: Colors.amber,
+                  height: screenHeight / 2.4,
+                  child: GridView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: tileList.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 25,
+                      mainAxisSpacing: 25.0,
+                      childAspectRatio: 1, // Adjust the aspect ratio as needed
+                    ),
+                    itemBuilder: (context, index) {
+                      return _buildTestTile(
+                        context,
+                        tileList[index]["title"],
+                        tileList[index]["icon"],
+                        tileList[index]["onClick"], // Pass the onClick callback
+                      );
+                    },
                   ),
-                  itemBuilder: (context, index) {
-                    return _buildTestTile(
-                      context,
-                      tileList[index]["title"],
-                      tileList[index]["icon"],
-                      tileList[index]["onClick"], // Pass the onClick callback
-                    );
-                  },
                 ),
               ),
-            ),
-          ],
+              const Gap(20),
+            ],
+          ),
         ),
       ),
     );
@@ -74,8 +82,8 @@ class PracticeTestTabView extends StatelessWidget {
   void showWritingBottomSheet() {
     Get.bottomSheet(
       Container(
-        padding: EdgeInsets.all(16.0),
-        decoration: BoxDecoration(
+        padding: const EdgeInsets.all(16.0),
+        decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20.0),
@@ -86,21 +94,21 @@ class PracticeTestTabView extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
-              leading: Icon(Icons.abc),
-              title: Text('Writing 1'),
+              leading: const Icon(Icons.abc),
+              title: const Text('Writing 1'),
               onTap: () {
                 // Handle share action
                 Get.back(); // Close the bottom sheet after action
-                Get.to(() => Writing1View());
+                Get.to(() => const Writing1View());
               },
             ),
             ListTile(
-              leading: Icon(Icons.abc),
-              title: Text('Writing 2'),
+              leading: const Icon(Icons.abc),
+              title: const Text('Writing 2'),
               onTap: () {
                 // Handle get link action
                 Get.back(); // Close the bottom sheet after action
-                Get.to(() => Writing2View());
+                Get.to(() => const Writing2View());
               },
             ),
           ],

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class WordOfTheDayModel {
   Map<String, String> wordOfTheDay = {
     "Loquacious": "Tending to talk a great deal; talkative.",
@@ -123,9 +125,7 @@ class WordOfTheDayModel {
     "Cajole":
         "Persuade someone to do something by sustained coaxing or flattery.",
     "Deft": "Neatly skillful and quick in one's movements.",
-    "Ebullient": "Cheerful and full of energy.",
     "Fatuous": "Silly and pointless.",
-    "Garrulous": "Excessively talkative, especially on trivial matters.",
     "Hubris": "Excessive pride or self-confidence.",
     "Impetuous": "Acting or done quickly and without thought or care.",
     "Juxtapose": "Place or deal with close together for contrasting effect.",
@@ -136,16 +136,67 @@ class WordOfTheDayModel {
     "Ostensible": "Stated or appearing to be true, but not necessarily so.",
     "Pithy": "Concise and forcefully expressive.",
     "Quotidian": "Of or occurring every day; daily.",
-    "Recalcitrant":
-        "Having an obstinately uncooperative attitude towards authority or discipline.",
     "Soporific": "Tending to induce drowsiness or sleep.",
     "Taciturn": "Reserved or uncommunicative in speech; saying little.",
-    "Ubiquitous": "Present, appearing, or found everywhere.",
     "Vociferous": "Vehement or clamorous.",
     "Waft":
         "Pass or cause to pass easily or gently through or as if through the air.",
     "Xeric": "Containing little moisture; very dry.",
     "Yore": "Of long ago or former times.",
-    "Zenith": "The time at which something is most powerful or successful."
+    "Zenith": "The time at which something is most powerful or successful.",
+    "Ambivalent":
+        "Having mixed feelings or contradictory ideas about something or someone.",
+    "Candid": "Truthful and straightforward; frank.",
+    "Debonair": "Confident, stylish, and charming (typically used of a man).",
+    "Empathy": "The ability to understand and share the feelings of another.",
+    "Frugal": "Sparing or economical with regard to money or food.",
+    "Genuine": "Truly what something is said to be; authentic.",
+    "Humble": "Having or showing a modest or low estimate of one's importance.",
+    "Intrepid":
+        "Fearless; adventurous (often used for rhetorical or humorous effect).",
+    "Jovial": "Cheerful and friendly.",
+    "Kooky": "Strange or eccentric.",
+    "Meticulous":
+        "Showing great attention to detail; very careful and precise.",
+    "Nurture": "Care for and encourage the growth or development of.",
+    "Optimistic": "Hopeful and confident about the future.",
+    "Pragmatic":
+        "Dealing with things sensibly and realistically in a way that is based on practical rather than theoretical considerations.",
+    "Resilient":
+        "Able to withstand or recover quickly from difficult conditions.",
+    "Stoic":
+        "Enduring pain and hardship without showing one's feelings or complaining.",
+    "Tactful":
+        "Having or showing skill and sensitivity in dealing with others or with difficult issues.",
+    "Unassuming": "Not pretentious or arrogant; modest.",
+    "Vibrant": "Full of energy and enthusiasm.",
+    "Whimsical":
+        "Playfully quaint or fanciful, especially in an appealing and amusing way.",
+    "Yielding": "Giving way under pressure; not hard or rigid.",
+    "Zany": "Amusingly unconventional and idiosyncratic."
   };
+
+  MapEntry<String, String> getWordOfTheDay() {
+    // Get all the keys from the map
+    List<String> keys = wordOfTheDay.keys.toList();
+
+    // Get the current date and convert it to a string in YYYYMMDD format
+    String today =
+        DateTime.now().toIso8601String().substring(0, 10).replaceAll('-', '');
+
+    // Use the date string to create a consistent seed for the random generator
+    int seed = int.parse(today);
+
+    // Create a Random instance with the seed
+    Random random = Random(seed);
+
+    // Generate a random index based on the length of the keys list
+    int randomIndex = random.nextInt(keys.length);
+
+    // Get the key at the random index
+    String randomKey = keys[randomIndex];
+
+    // Return the key and the corresponding value as a MapEntry
+    return MapEntry(randomKey, wordOfTheDay[randomKey]!);
+  }
 }
