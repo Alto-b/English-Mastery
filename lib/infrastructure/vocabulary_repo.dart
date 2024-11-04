@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:english_mastery/domain/vocabulary/collocation_model.dart';
+import 'package:english_mastery/domain/vocabulary/context_clues_model.dart';
 import 'package:english_mastery/domain/vocabulary/error_correction_model.dart';
 import 'package:english_mastery/domain/vocabulary/multiple_choice_model.dart';
 import 'package:english_mastery/domain/vocabulary/sentence_completion_model.dart';
@@ -173,6 +174,35 @@ class VocabularyRepo {
         final responseData = jsonDecode(response.body);
         print("vocabulary generate body : ${response.body}");
         return WordFormsModel.fromJson(responseData);
+      } else {
+        if (kDebugMode) {
+          print('Failed to fetch vocabulary data: ${response.statusCode}');
+        }
+        return null;
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error: $e');
+      }
+      return null;
+    }
+  }
+
+//context clues
+  Future<ContextCluesModel?> generate_context_clues() async {
+    try {
+      final response = await http.get(
+        Uri.parse("${Env.host}${URLs.context_clues}"),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      );
+      print(
+          "vocabulary generate_context_clues() status code : ${response.statusCode}");
+      if (response.statusCode == 200) {
+        final responseData = jsonDecode(response.body);
+        print("vocabulary generate body : ${response.body}");
+        return ContextCluesModel.fromJson(responseData);
       } else {
         if (kDebugMode) {
           print('Failed to fetch vocabulary data: ${response.statusCode}');

@@ -18,3 +18,5 @@ class VocabularySynonymsAntonymsEvent extends VocabularyEvent {}
 class VocabularyCollocationEvent extends VocabularyEvent {}
 
 class VocabularyWordFormEvent extends VocabularyEvent {}
+
+class VocabularyContextCluesEvent extends VocabularyEvent {}

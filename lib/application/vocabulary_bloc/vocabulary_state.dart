@@ -67,3 +67,11 @@ class VocabularyWordFormsState extends VocabularyState {
   @override
   List<Object> get props => [wordFormsModel];
 }
+
+class VocabularyContextCluesState extends VocabularyState {
+  final List<ContextCluesModel> contextCluesModel;
+
+  VocabularyContextCluesState({required this.contextCluesModel});
+  @override
+  List<Object> get props => [contextCluesModel];
+}

@@ -24,4 +24,5 @@ class URLs {
   static const synonyms_antonyms = 'vocabulary/synonyms_antonyms/';
   static const collocations = 'vocabulary/collocations/';
   static const word_forms = 'vocabulary/word_forms/';
+  static const context_clues = 'vocabulary/context_clues/';
 }

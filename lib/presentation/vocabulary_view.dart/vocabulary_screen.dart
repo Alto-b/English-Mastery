@@ -1,5 +1,6 @@
 import 'package:english_mastery/application/vocabulary_bloc/vocabulary_bloc.dart';
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/collocation_widget.dart';
+import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/context_clues_widget.dart';
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/error_correction_widget.dart';
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/multiple_choice_widget.dart';
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/sentence_completion_widget.dart';
@@ -23,7 +24,8 @@ class VocabularyScreen extends StatelessWidget {
     "Multiple Choice",
     "Synonyms Antonyms",
     "Collocations",
-    "Word Forms"
+    "Word Forms",
+    "Context Clues"
   ];
 
   // Method to handle dropdown selection
@@ -48,6 +50,9 @@ class VocabularyScreen extends StatelessWidget {
         break;
       case "Word Forms":
         context.read<VocabularyBloc>().add(VocabularyWordFormEvent());
+        break;
+      case "Context Clues":
+        context.read<VocabularyBloc>().add(VocabularyContextCluesEvent());
         break;
     }
   }
@@ -170,6 +175,8 @@ class VocabularyScreen extends StatelessWidget {
                   return CollocationView(state: state);
                 } else if (state is VocabularyWordFormsState) {
                   return WordFormView(state: state);
+                } else if (state is VocabularyContextCluesState) {
+                  return ContextCluesView(state: state);
                 } else {
                   return const Center(
                     child: Text("Select a category to proceed...."),
