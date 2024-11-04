@@ -4,6 +4,7 @@ import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/error_
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/multiple_choice_widget.dart';
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/sentence_completion_widget.dart';
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/synonyms_antonyms_widget.dart';
+import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/word_form_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +22,8 @@ class VocabularyScreen extends StatelessWidget {
     "Error Correction",
     "Multiple Choice",
     "Synonyms Antonyms",
-    "Collocations"
+    "Collocations",
+    "Word Forms"
   ];
 
   // Method to handle dropdown selection
@@ -43,6 +45,9 @@ class VocabularyScreen extends StatelessWidget {
         break;
       case "Collocations":
         context.read<VocabularyBloc>().add(VocabularyCollocationEvent());
+        break;
+      case "Word Forms":
+        context.read<VocabularyBloc>().add(VocabularyWordFormEvent());
         break;
     }
   }
@@ -123,8 +128,14 @@ class VocabularyScreen extends StatelessWidget {
                   return Center(
                     child: Column(
                       children: [
-                        Lottie.asset('assets/loader/404.json'),
-                        Text(state.errorMessage),
+                        Padding(
+                          padding: const EdgeInsets.all(25.0),
+                          child: Lottie.asset('assets/loader/404.json'),
+                        ),
+                        Text(
+                          state.errorMessage,
+                          style: TextStyle(color: Colors.grey),
+                        ),
                       ],
                     ),
                   );
@@ -157,6 +168,8 @@ class VocabularyScreen extends StatelessWidget {
                   return SynonymsAntonymsView(state: state);
                 } else if (state is VocabularyCollocationState) {
                   return CollocationView(state: state);
+                } else if (state is VocabularyWordFormsState) {
+                  return WordFormView(state: state);
                 } else {
                   return const Center(
                     child: Text("Select a category to proceed...."),

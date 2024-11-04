@@ -16,3 +16,5 @@ class VocabularyMultipleChoiceEvent extends VocabularyEvent {}
 class VocabularySynonymsAntonymsEvent extends VocabularyEvent {}
 
 class VocabularyCollocationEvent extends VocabularyEvent {}
+
+class VocabularyWordFormEvent extends VocabularyEvent {}

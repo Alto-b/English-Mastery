@@ -59,3 +59,11 @@ class VocabularyCollocationState extends VocabularyState {
   @override
   List<Object> get props => [collocationModel];
 }
+
+class VocabularyWordFormsState extends VocabularyState {
+  final List<WordFormsModel> wordFormsModel;
+
+  VocabularyWordFormsState({required this.wordFormsModel});
+  @override
+  List<Object> get props => [wordFormsModel];
+}
