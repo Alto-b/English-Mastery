@@ -8,3 +8,5 @@ sealed class VocabularyEvent extends Equatable {
 }
 
 class VocabualarySentenceCompletionEvent extends VocabularyEvent {}
+
+class VocabualaryErrorCorrectionEvent extends VocabularyEvent {}

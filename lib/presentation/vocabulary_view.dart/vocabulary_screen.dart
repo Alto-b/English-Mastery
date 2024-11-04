@@ -1,4 +1,6 @@
 import 'package:english_mastery/application/vocabulary_bloc/vocabulary_bloc.dart';
+import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/error_correction_widget.dart';
+import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/sentence_completion_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,10 +24,9 @@ class VocabularyScreen extends StatelessWidget {
             .read<VocabularyBloc>()
             .add(VocabualarySentenceCompletionEvent());
         break;
-      // Uncomment and add cases for other events as needed
-      // case "Error Correction":
-      //   context.read<VocabularyBloc>().add(VocabualaryErrorCorrectionEvent());
-      //   break;
+      case "Error Correction":
+        context.read<VocabularyBloc>().add(VocabualaryErrorCorrectionEvent());
+        break;
       // case "Multiple Choice":
       //   context.read<VocabularyBloc>().add(VocabualaryMultipleChoiceEvent());
       //   break;
@@ -86,94 +87,16 @@ class VocabularyScreen extends StatelessWidget {
             child: BlocBuilder<VocabularyBloc, VocabularyState>(
               builder: (context, state) {
                 if (state is VocabularySentenceCompletionState) {
-                  return SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 16),
-                          const Text(
-                            "Sentence Completion Task",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blueAccent,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            state.sentenceCompletionModel.first.task ??
-                                "Sentence Completion Task",
-                            style: const TextStyle(
-                              fontSize: 18,
-                              color: Colors.black87,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            state.sentenceCompletionModel.first.description ??
-                                "Sentence Completion description",
-                            style: const TextStyle(
-                              fontSize: 16,
-                              color: Colors.black54,
-                            ),
-                          ),
-                          const SizedBox(height: 16),
-                          ListView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: state
-                                .sentenceCompletionModel.first.questions.length,
-                            itemBuilder: (context, index) {
-                              return Card(
-                                margin: const EdgeInsets.symmetric(vertical: 8),
-                                elevation: 3,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Question ${index + 1}",
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16,
-                                          color: Colors.blueAccent,
-                                        ),
-                                      ),
-                                      const SizedBox(height: 8),
-                                      Text(
-                                        state.sentenceCompletionModel.first
-                                                .questions[index] ??
-                                            "Question text",
-                                        style: const TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.black87,
-                                        ),
-                                      ),
-                                      const SizedBox(height: 8),
-                                      Text(
-                                        "Answer: ${state.sentenceCompletionModel.first.answers[index] ?? "Answer text"}",
-                                        style: const TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.black54,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
+                  return SentenceCompletionView(
+                    state: state,
                   );
+                } else if (state is VocabularyErrorCorrectionState) {
+                  return ErrorCorrectionView(state: state);
+                } else if (state is VocabularyErrorState) {
+                  return Center(
+                    child: Text(state.errorMessage),
+                  );
+                } else if (state is VocabularyLoadingState) {return Text("Loading...");
                 } else {
                   return const Center(
                     child: CircularProgressIndicator(),

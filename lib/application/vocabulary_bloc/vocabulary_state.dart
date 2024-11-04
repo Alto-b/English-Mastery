@@ -9,6 +9,8 @@ sealed class VocabularyState extends Equatable {
 
 final class VocabularyInitial extends VocabularyState {}
 
+class VocabularyLoadingState extends VocabularyState {}
+
 class VocabularyErrorState extends VocabularyState {
   final String errorMessage;
 
@@ -20,7 +22,16 @@ class VocabularyErrorState extends VocabularyState {
 class VocabularySentenceCompletionState extends VocabularyState {
   final List<VocabularySentenceCompletionModel> sentenceCompletionModel;
 
-  const VocabularySentenceCompletionState({required this.sentenceCompletionModel});
+  const VocabularySentenceCompletionState(
+      {required this.sentenceCompletionModel});
   @override
   List<Object> get props => [sentenceCompletionModel];
+}
+
+class VocabularyErrorCorrectionState extends VocabularyState {
+  final List<ErrorCorrectionModel> errorCorrectionModel;
+
+  const VocabularyErrorCorrectionState({required this.errorCorrectionModel});
+  @override
+  List<Object> get props => [errorCorrectionModel];
 }

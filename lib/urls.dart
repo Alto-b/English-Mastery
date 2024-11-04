@@ -19,4 +19,6 @@ class URLs {
 
   //vocabulary
   static const sentence_completion = 'vocabulary/sentence_completion/';
+  static const error_correction = 'vocabulary/error_correction/';
+  static const multiple_choice = 'vocabulary/multiple_choice/';
 }
