@@ -44,7 +44,7 @@ class SpeakingBloc extends Bloc<SpeakingEvent, SpeakingState> {
         emit(RecordingError(e.toString()));
       }
     } else {
-      emit(RecordingError("Permission denied"));
+      emit(const RecordingError("Permission denied"));
     }
   }
 

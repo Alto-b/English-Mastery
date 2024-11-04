@@ -27,12 +27,12 @@ class _SplashScreenViewState extends State<SplashScreenView> {
 
   Future<void> _checkUserLoginStatus() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    isUserLoggedIn = await prefs.getBool('isUserLoggedIn');
+    isUserLoggedIn = prefs.getBool('isUserLoggedIn');
     log("User logged in: $isUserLoggedIn");
     if (isUserLoggedIn == true) {
       BlocProvider.of<SplashBloc>(context).add(ProceedToHomeEvent());
     } else {
-      BlocProvider.of<SplashBloc>(context)..add(ProceedToProfileSetupEvent());
+      BlocProvider.of<SplashBloc>(context).add(ProceedToProfileSetupEvent());
     }
   }
 
@@ -46,7 +46,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
               // Check if widget is still mounted
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => ProfileSetupScreen()),
+                MaterialPageRoute(builder: (context) => const ProfileSetupScreen()),
               );
             }
           });

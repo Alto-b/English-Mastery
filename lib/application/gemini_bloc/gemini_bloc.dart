@@ -32,7 +32,7 @@ class GeminiBloc extends Bloc<GeminiEvent, GeminiState> {
             role: 'model', parts: [GeminiPartModel(text: parsedText)]));
         emit(GeminiSuccessState(messages: List.from(messages)));
       } else {
-        emit(GeminiErrorState(errorMessage: 'Failed to generate a response.'));
+        emit(const GeminiErrorState(errorMessage: 'Failed to generate a response.'));
       }
     } catch (e) {
       emit(GeminiErrorState(errorMessage: e.toString()));

@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -17,7 +16,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       HomeSuccessEvent event, Emitter<HomeState> emit) async {
     try {
       final prefs = await SharedPreferences.getInstance();
-      Future.delayed(Duration(seconds: 2));
+      Future.delayed(const Duration(seconds: 2));
       emit(HomeSuccessState(
         userName: prefs.getString('userName') ?? "",
         userEmail: prefs.getString('userEmail') ?? "",

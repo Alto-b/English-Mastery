@@ -1,8 +1,6 @@
 import 'package:english_mastery/application/profile_setup_bloc/profile_setup_bloc.dart';
 import 'package:english_mastery/presentation/home_view/home_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:random_avatar/random_avatar.dart';
@@ -10,7 +8,7 @@ import 'package:avatar_glow/avatar_glow.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileSetupScreen extends StatefulWidget {
-  ProfileSetupScreen({super.key});
+  const ProfileSetupScreen({super.key});
 
   @override
   _ProfileSetupScreenState createState() => _ProfileSetupScreenState();
@@ -58,7 +56,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
     // Common InputDecoration for all input fields
     final InputDecoration commonDecoration = InputDecoration(
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.grey),
+        borderSide: const BorderSide(color: Colors.grey),
         borderRadius: BorderRadius.circular(12),
       ),
       hintText:
@@ -72,7 +70,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => HomeScreen(),
+                builder: (context) => const HomeScreen(),
               ));
         }
       },

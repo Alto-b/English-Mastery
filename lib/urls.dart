@@ -18,5 +18,5 @@ class URLs {
   static const speaking2_generate_task = 'speaking2/generate_question/';
 
   //vocabulary
-  static const sentence_completion = '/vocabulary/sentence_completion/';
+  static const sentence_completion = 'vocabulary/sentence_completion/';
 }

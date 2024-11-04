@@ -14,7 +14,7 @@ class WordOfTheDayWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
-        shadowColor: Color(0xFF42A5F5).withOpacity(0.5),
+        shadowColor: const Color(0xFF42A5F5).withOpacity(0.5),
         elevation: 10,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
@@ -24,7 +24,7 @@ class WordOfTheDayWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
@@ -45,24 +45,24 @@ class WordOfTheDayWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Divider(
                 color: Colors.grey.shade300,
                 thickness: 1,
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text(
-                "${randomWord.key}",
+                randomWord.key,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w900,
                   color: Colors.black87,
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Text(
-                "${randomWord.value}",
+                randomWord.value,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 16,

@@ -1,9 +1,7 @@
-import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:english_mastery/application/home_bloc/home_bloc.dart';
 import 'package:english_mastery/presentation/home_view/home_success_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

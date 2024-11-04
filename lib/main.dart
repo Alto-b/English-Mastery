@@ -4,8 +4,10 @@ import 'package:english_mastery/application/profile_setup_bloc/profile_setup_blo
 import 'package:english_mastery/application/speaking_bloc/speaking_bloc.dart';
 import 'package:english_mastery/application/speaking_question_bloc/speaking_question_bloc.dart';
 import 'package:english_mastery/application/splash_bloc/splash_bloc.dart';
+import 'package:english_mastery/application/vocabulary_bloc/vocabulary_bloc.dart';
 import 'package:english_mastery/application/writing_bloc/writing_bloc.dart';
 import 'package:english_mastery/infrastructure/speaking_repo.dart';
+import 'package:english_mastery/infrastructure/vocabulary_repo.dart';
 import 'package:english_mastery/infrastructure/writing_repo.dart';
 import 'package:english_mastery/presentation/splash_view/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -53,6 +55,9 @@ class MyApp extends StatelessWidget {
             ),
             BlocProvider(
               create: (context) => SpeakingQuestionBloc(SpeakingRepo()),
+            ),
+            BlocProvider(
+              create: (context) => VocabularyBloc(VocabularyRepo()),
             ),
           ],
           child: GetMaterialApp(

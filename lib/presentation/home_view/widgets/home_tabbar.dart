@@ -21,13 +21,13 @@ class HomeTabBarWidget extends StatelessWidget {
           width: screenWidth / 3,
           height: screenHeight / 18,
           color: Colors.red,
-          child: Text("Practice"),
+          child: const Text("Practice"),
         ),
         Container(
           width: screenWidth / 3,
           height: screenHeight / 18,
           color: Colors.green,
-          child: Text("Mock Test"),
+          child: const Text("Mock Test"),
         )
       ]),
     );

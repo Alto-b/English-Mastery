@@ -17,7 +17,7 @@ class RecordingPaused extends SpeakingState {}
 class RecordingStopped extends SpeakingState {
   final String path;
 
-  RecordingStopped(this.path);
+  const RecordingStopped(this.path);
 
   @override
   List<Object> get props => [path];
@@ -26,7 +26,7 @@ class RecordingStopped extends SpeakingState {
 class RecordingError extends SpeakingState {
   final String error;
 
-  RecordingError(this.error);
+  const RecordingError(this.error);
 
   @override
   List<Object> get props => [error];

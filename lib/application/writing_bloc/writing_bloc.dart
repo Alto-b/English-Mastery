@@ -38,12 +38,12 @@ class WritingBloc extends Bloc<WritingEvent, WritingState> {
         ));
       } else {
         // Emit error state if the task model is null
-        emit(WritingErrorState(message: 'Failed to generate writing task'));
+        emit(const WritingErrorState(message: 'Failed to generate writing task'));
       }
     } catch (error) {
       // Emit error state if an exception occurs
       emit(WritingErrorState(
-          message: 'Failed to generate writing task ${error}'));
+          message: 'Failed to generate writing task $error'));
     }
   }
 
@@ -62,7 +62,7 @@ class WritingBloc extends Bloc<WritingEvent, WritingState> {
       //   emit(WritingErrorState(message: 'Failed to evaluate the answer'));
       // }
     } catch (e) {
-      emit(WritingErrorState(message: 'Failed to evaluate the answer: ${e}'));
+      emit(WritingErrorState(message: 'Failed to evaluate the answer: $e'));
     }
   }
 
@@ -75,7 +75,7 @@ class WritingBloc extends Bloc<WritingEvent, WritingState> {
         emit(Writing1EvaluateSuccessState(writing1evaluateModel: taskModel));
       }
     } catch (e) {
-      emit(WritingErrorState(message: 'Failed to evaluate the answer: ${e}'));
+      emit(WritingErrorState(message: 'Failed to evaluate the answer: $e'));
     }
   }
 
@@ -88,7 +88,7 @@ class WritingBloc extends Bloc<WritingEvent, WritingState> {
           await writing1Repo.writing1_evaluation(event.userInput);
       emit(Writing1OutPutSuccessState(grammerModel!, EvaluateModel!));
     } catch (e) {
-      emit(WritingErrorState(message: 'Failed to evaluate the answer: ${e}'));
+      emit(WritingErrorState(message: 'Failed to evaluate the answer: $e'));
     }
   }
 
@@ -105,12 +105,12 @@ class WritingBloc extends Bloc<WritingEvent, WritingState> {
             writing2generateTaskModel: [taskModel]));
       } else {
         // Emit error state if the task model is null
-        emit(WritingErrorState(message: 'Failed to generate writing task 2'));
+        emit(const WritingErrorState(message: 'Failed to generate writing task 2'));
       }
     } catch (error) {
       // Emit error state if an exception occurs
       emit(WritingErrorState(
-          message: 'Failed to generate writing task 2 : ${error}'));
+          message: 'Failed to generate writing task 2 : $error'));
     }
   }
 }

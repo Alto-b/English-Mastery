@@ -1,7 +1,6 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:english_mastery/application/home_bloc/home_bloc.dart';
 import 'package:english_mastery/presentation/profile_view/profile_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:random_avatar/random_avatar.dart';
 
@@ -31,7 +30,7 @@ class UserHomeCard extends StatelessWidget {
           // color: Colors.black54,
           clipBehavior: Clip.antiAliasWithSaveLayer,
           shape: RoundedRectangleBorder(
-            side: BorderSide(
+            side: const BorderSide(
                 color: Colors.grey,
                 width: 0.2,
                 strokeAlign: BorderSide.strokeAlignInside),
@@ -106,7 +105,7 @@ class UserHomeCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                Icon(Icons.menu)
+                const Icon(Icons.menu)
                 // IconButton(
                 //   onPressed: () {
                 //     // Add action here

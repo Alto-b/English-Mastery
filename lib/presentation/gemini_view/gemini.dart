@@ -1,14 +1,12 @@
 import 'package:english_mastery/application/gemini_bloc/gemini_bloc.dart';
-import 'package:english_mastery/domain/gemini_model.dart';
 import 'package:english_mastery/infrastructure/gemini_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
-import 'package:random_avatar/random_avatar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class GeminiPage extends StatefulWidget {
-  const GeminiPage({Key? key}) : super(key: key);
+  const GeminiPage({super.key});
 
   @override
   _GeminiPageState createState() => _GeminiPageState();
@@ -146,7 +144,7 @@ class _GeminiPageState extends State<GeminiPage> {
         },
       );
     } else if (state is GeminiInitial) {
-      return Center(
+      return const Center(
         child: Text(
           "Start a conversation!",
           style: TextStyle(color: Colors.black54, fontSize: 18),
@@ -188,7 +186,7 @@ class _GeminiPageState extends State<GeminiPage> {
                 style: const TextStyle(color: Colors.black87),
                 decoration: InputDecoration(
                   hintText: "Ask me something...",
-                  hintStyle: TextStyle(color: Colors.black54),
+                  hintStyle: const TextStyle(color: Colors.black54),
                   filled: true,
                   fillColor: Colors.grey.shade200,
                   contentPadding: const EdgeInsets.symmetric(

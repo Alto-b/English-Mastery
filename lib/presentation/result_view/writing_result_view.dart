@@ -6,7 +6,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 class WritingResultView extends StatelessWidget {
-  WritingResultView(
+  const WritingResultView(
       {super.key, required this.title, required this.user_answer});
   final String title;
   final String user_answer;
@@ -19,10 +19,10 @@ class WritingResultView extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {
-              Get.offAll(HomeScreen());
+              Get.offAll(const HomeScreen());
             },
-            icon: Icon(Icons.home)),
-        title: Text("${title}"),
+            icon: const Icon(Icons.home)),
+        title: Text(title),
       ),
       body: BlocBuilder<WritingBloc, WritingState>(
         builder: (context, state) {
@@ -32,21 +32,21 @@ class WritingResultView extends StatelessWidget {
                 padding: const EdgeInsets.all(12.0),
                 child: Column(
                   children: [
-                    Gap(35),
+                    const Gap(35),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           "Band score : ",
                           style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.w400,
                               color: Colors.blueGrey),
                         ),
-                        Gap(10),
+                        const Gap(10),
                         Text(
-                          "${state.writing1CheckGrammarModel.bandScore.toString()}",
-                          style: TextStyle(
+                          state.writing1CheckGrammarModel.bandScore.toString(),
+                          style: const TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.w600,
                             color: Colors.green,
@@ -54,20 +54,20 @@ class WritingResultView extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Gap(20),
+                    const Gap(20),
                     Text(state.writing1evaluateModel.feedback ?? ""),
-                    Gap(20),
-                    Divider(),
-                    Gap(20),
-                    Text(
+                    const Gap(20),
+                    const Divider(),
+                    const Gap(20),
+                    const Text(
                       "Corrected text",
                       style: TextStyle(color: Colors.blueGrey),
                     ),
-                    Gap(15),
+                    const Gap(15),
                     Text(
                       state.writing1CheckGrammarModel.correctedText.toString(),
                     ),
-                    Gap(30)
+                    const Gap(30)
                   ],
                 ),
               ),
@@ -84,19 +84,9 @@ class WritingResultView extends StatelessWidget {
                   alignment: Alignment.center,
                   children: [
                     Container(
-                      child: Center(
-                          child: Padding(
-                        padding: const EdgeInsets.all(14.0),
-                        child: Text(
-                          "Mastery AI",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.w700),
-                        ),
-                      )),
                       width: 80,
                       height: 80,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         gradient: LinearGradient(
                           colors: [
@@ -108,8 +98,18 @@ class WritingResultView extends StatelessWidget {
                           end: Alignment.bottomRight,
                         ),
                       ),
+                      child: const Center(
+                          child: Padding(
+                        padding: EdgeInsets.all(14.0),
+                        child: Text(
+                          "Mastery AI",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.w700),
+                        ),
+                      )),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 70,
                       height: 70,
                       child: CircularProgressIndicator(
@@ -120,8 +120,8 @@ class WritingResultView extends StatelessWidget {
                   ],
                 ),
               ),
-              Gap(20),
-              Text(
+              const Gap(20),
+              const Text(
                 "Analyzing...",
                 style: TextStyle(color: Colors.grey),
               )

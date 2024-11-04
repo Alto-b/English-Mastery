@@ -21,7 +21,7 @@ class ResumeRecording extends SpeakingEvent {}
 class PlayRecording extends SpeakingEvent {
   final String filePath;
 
-  PlayRecording(this.filePath);
+  const PlayRecording(this.filePath);
 
   @override
   List<Object> get props => [filePath];
@@ -30,7 +30,7 @@ class PlayRecording extends SpeakingEvent {
 class GenerateSpeakingQuestion extends SpeakingEvent {
   final String question;
 
-  GenerateSpeakingQuestion({required this.question});
+  const GenerateSpeakingQuestion({required this.question});
   @override
   List<Object> get props => [question];
 }

@@ -1,7 +1,5 @@
 import 'package:english_mastery/application/profile_setup_bloc/profile_setup_bloc.dart';
 import 'package:english_mastery/presentation/home_view/home_screen.dart';
-import 'package:english_mastery/presentation/profile_view/profile_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -10,7 +8,7 @@ import 'package:avatar_glow/avatar_glow.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class EditProfileScreen extends StatefulWidget {
-  EditProfileScreen({super.key});
+  const EditProfileScreen({super.key});
 
   @override
   _EditProfileScreenState createState() => _EditProfileScreenState();
@@ -66,7 +64,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     // Common InputDecoration for all input fields
     final InputDecoration commonDecoration = InputDecoration(
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.grey),
+        borderSide: const BorderSide(color: Colors.grey),
         borderRadius: BorderRadius.circular(12),
       ),
       hintText:
@@ -81,7 +79,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => HomeScreen(),
+                builder: (context) => const HomeScreen(),
               ));
         }
       },

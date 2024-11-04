@@ -1,6 +1,5 @@
 import 'package:english_mastery/application/writing_bloc/writing_bloc.dart';
 import 'package:english_mastery/presentation/answer_view/writing_answer_view.dart';
-import 'package:english_mastery/presentation/home_view/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -200,7 +199,7 @@ class Writing1View extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Lottie.asset('assets/loader/failed.json', height: 250),
-                  Gap(20),
+                  const Gap(20),
                   Text(
                     state.message,
                     style: TextStyle(
@@ -208,14 +207,14 @@ class Writing1View extends StatelessWidget {
                         fontSize: 20,
                         fontWeight: FontWeight.w700),
                   ),
-                  Gap(20),
+                  const Gap(20),
                   IconButton(
                       onPressed: () {
                         context
                             .read<WritingBloc>()
                             .add(Writing1GenerateTaskEvent());
                       },
-                      icon: Icon(Icons.replay_outlined))
+                      icon: const Icon(Icons.replay_outlined))
                 ],
               ),
             );
@@ -225,8 +224,8 @@ class Writing1View extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CircularProgressIndicator(),
-              Gap(25),
+              const CircularProgressIndicator(),
+              const Gap(25),
               ElevatedButton.icon(
                 style: ButtonStyle(
                   elevation: const MaterialStatePropertyAll(5),

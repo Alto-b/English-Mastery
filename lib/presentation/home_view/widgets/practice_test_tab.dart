@@ -10,7 +10,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 class IELTSTestTabView extends StatelessWidget {
-  IELTSTestTabView({super.key});
+  const IELTSTestTabView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class IELTSTestTabView extends StatelessWidget {
       {
         "title": "Speaking",
         "icon": Icons.mic,
-        "onClick": () => Get.to(() => SpeakingScreenView())
+        "onClick": () => Get.to(() => const SpeakingScreenView())
       },
     ];
     final screenHeight = MediaQuery.of(context).size.height;

@@ -6,3 +6,5 @@ sealed class VocabularyEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class VocabualarySentenceCompletionEvent extends VocabularyEvent {}

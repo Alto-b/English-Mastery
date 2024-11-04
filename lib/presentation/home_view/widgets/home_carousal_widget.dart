@@ -12,7 +12,7 @@ class HomeCarousalWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: screenHeight / 4,
       width: screenWidth,
       //   child: CarousalView(

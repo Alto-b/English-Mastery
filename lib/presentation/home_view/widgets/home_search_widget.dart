@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 
 class HomeSearchWidget extends StatelessWidget {
   const HomeSearchWidget({
-    Key? key,
+    super.key,
     required this.screenHeight,
     required this.screenWidth,
-  }) : super(key: key);
+  });
 
   final double screenHeight;
   final double screenWidth;
@@ -22,7 +22,7 @@ class HomeSearchWidget extends StatelessWidget {
             PageRouteBuilder(
               transitionDuration: const Duration(milliseconds: 800),
               pageBuilder: (context, animation, secondaryAnimation) =>
-                  GeminiPage(),
+                  const GeminiPage(),
             ),
           );
         },
@@ -37,10 +37,10 @@ class HomeSearchWidget extends StatelessWidget {
               width: screenWidth * 0.9,
               padding: const EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                   colors: [
                     Colors.lightBlueAccent,
-                    const Color.fromARGB(255, 33, 111, 246)
+                    Color.fromARGB(255, 33, 111, 246)
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -56,20 +56,20 @@ class HomeSearchWidget extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.search,
                     color: Colors.white,
                     size: 28,
                   ),
-                  SizedBox(width: 10),
-                  Text(
+                  const SizedBox(width: 10),
+                  const Text(
                     "Ask me something...",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   AvatarGlow(
                     child: Image.asset(
                       'assets/logo/gemini.png',

@@ -12,10 +12,10 @@ class Writing1GenerateTaskModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['question'] = this.question;
-    data['sample_answer'] = this.sampleAnswer;
-    data['image_url'] = this.imageUrl;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['question'] = question;
+    data['sample_answer'] = sampleAnswer;
+    data['image_url'] = imageUrl;
     return data;
   }
 }

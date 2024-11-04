@@ -90,6 +90,7 @@ class Writing1Repo {
     } catch (e) {
       print('Error: $e');
     }
+    return null;
   }
 
   Future<Writing1EvaluateModel?> writing1_evaluation(String user_input) async {
@@ -99,7 +100,7 @@ class Writing1Repo {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: jsonEncode({"user_answer": "$user_input"}));
+          body: jsonEncode({"user_answer": user_input}));
       if (response.statusCode == 200) {
         final jsonData = await jsonDecode(response.body);
         return Writing1EvaluateModel.fromJson(jsonData);
@@ -110,5 +111,6 @@ class Writing1Repo {
     } catch (e) {
       print('Error: $e');
     }
+    return null;
   }
 }

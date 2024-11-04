@@ -1,10 +1,7 @@
-import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:english_mastery/application/home_bloc/home_bloc.dart';
 import 'package:english_mastery/application/profile_setup_bloc/profile_setup_bloc.dart';
-import 'package:english_mastery/presentation/profile_setup_view/profile_setup_screen.dart';
 import 'package:english_mastery/presentation/profile_view/edit_profile_view.dart';
 import 'package:english_mastery/presentation/splash_view/splash_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -29,7 +26,7 @@ class ProfileScreen extends StatelessWidget {
           Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(
-                builder: (context) => SplashScreenView(),
+                builder: (context) => const SplashScreenView(),
               ),
               (route) => false);
         }
@@ -119,7 +116,7 @@ class ProfileScreen extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => EditProfileScreen(),
+                                  builder: (context) => const EditProfileScreen(),
                                 ));
                           },
                         ),
@@ -246,7 +243,7 @@ class ProfileScreen extends StatelessWidget {
           onTap: onTap,
           borderRadius: BorderRadius.circular(15),
           splashColor: Colors.blueGrey.shade100,
-          child: Container(
+          child: SizedBox(
             width: tileSize,
             height: tileSize,
             child: Column(

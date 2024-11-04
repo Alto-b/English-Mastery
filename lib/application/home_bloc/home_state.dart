@@ -14,7 +14,7 @@ class HomeSuccessState extends HomeState {
   final String userEmail;
   final String userGender;
   final String userAvatar;
-  HomeSuccessState({
+  const HomeSuccessState({
     required this.userName,
     required this.userEmail,
     required this.userGender,

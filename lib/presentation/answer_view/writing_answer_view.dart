@@ -1,11 +1,9 @@
-import 'package:english_mastery/application/writing_bloc/writing_bloc.dart';
 import 'package:english_mastery/presentation/result_view/writing_result_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
 class WritingAnswerView extends StatefulWidget {
-  WritingAnswerView({super.key, this.pageTitle});
+  const WritingAnswerView({super.key, this.pageTitle});
 
   @override
   _WritingAnswerViewState createState() => _WritingAnswerViewState();
@@ -67,7 +65,7 @@ class _WritingAnswerViewState extends State<WritingAnswerView> {
                   expands: true, // Expands to fill the available space
                   keyboardType: TextInputType.multiline,
                   textInputAction: TextInputAction.newline,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: "Enter your answer here...",
                     border: InputBorder.none,
                     contentPadding: EdgeInsets.all(16),
@@ -83,18 +81,18 @@ class _WritingAnswerViewState extends State<WritingAnswerView> {
                   const EdgeInsets.symmetric(vertical: 8.0, horizontal: 18),
               child: Text(
                 "$wordCount words",
-                style: TextStyle(color: Colors.blueGrey),
+                style: const TextStyle(color: Colors.blueGrey),
               ),
             ),
           ),
-          Container(
+          SizedBox(
             width: double.infinity,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton.icon(
                 style: ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(Colors.green),
-                  elevation: MaterialStatePropertyAll(5),
+                  backgroundColor: const MaterialStatePropertyAll(Colors.green),
+                  elevation: const MaterialStatePropertyAll(5),
                   shape: MaterialStatePropertyAll(
                     ContinuousRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
@@ -103,7 +101,7 @@ class _WritingAnswerViewState extends State<WritingAnswerView> {
                 ),
                 onPressed: () {
                   // Handle the submit action here
-                  if (answerController.text.length != 0) {
+                  if (answerController.text.isNotEmpty) {
                     // context.read<WritingBloc>().add(Writing1CheckGrammerEvent(
                     //     user_input: answerController.text.trim()));
                     Get.to(() => WritingResultView(
@@ -116,8 +114,8 @@ class _WritingAnswerViewState extends State<WritingAnswerView> {
                         colorText: Colors.white);
                   }
                 },
-                icon: Icon(Icons.send),
-                label: Text("Submit Answer"),
+                icon: const Icon(Icons.send),
+                label: const Text("Submit Answer"),
               ),
             ),
           ),

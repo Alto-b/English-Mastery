@@ -1,6 +1,5 @@
 import 'package:english_mastery/application/writing_bloc/writing_bloc.dart';
 import 'package:english_mastery/presentation/answer_view/writing_answer_view.dart';
-import 'package:english_mastery/presentation/home_view/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
