@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:english_mastery/domain/vocabulary/error_correction_model.dart';
+import 'package:english_mastery/domain/vocabulary/multiple_choice_model.dart';
 import 'package:english_mastery/domain/vocabulary/sentence_completion_model.dart';
 import 'package:english_mastery/infrastructure/vocabulary_repo.dart';
 import 'package:equatable/equatable.dart';
@@ -17,6 +18,7 @@ class VocabularyBloc extends Bloc<VocabularyEvent, VocabularyState> {
     });
     on<VocabualarySentenceCompletionEvent>(generateSentenceCompletion);
     on<VocabualaryErrorCorrectionEvent>(generateErrorCorrection);
+    on<VocabularyMultipleChoiceEvent>(generateMultipleChoice);
   }
 
   FutureOr<void> generateSentenceCompletion(
@@ -47,6 +49,24 @@ class VocabularyBloc extends Bloc<VocabularyEvent, VocabularyState> {
           await vocabulary_repo.generate_error_correction();
       if (taskModel != null) {
         emit(VocabularyErrorCorrectionState(errorCorrectionModel: [taskModel]));
+      } else {
+        emit(const VocabularyErrorState(
+            errorMessage: "Failed to generate vocabulary task "));
+      }
+    } catch (e) {
+      emit(VocabularyErrorState(
+          errorMessage: "Failed to generate vocabulary task ${e.toString()}"));
+    }
+  }
+
+  FutureOr<void> generateMultipleChoice(VocabularyMultipleChoiceEvent event,
+      Emitter<VocabularyState> emit) async {
+    emit(VocabularyLoadingState());
+    try {
+      final MultipleChoiceModel? taskModel =
+          await vocabulary_repo.generate_multiple_choice();
+      if (taskModel != null) {
+        emit(VocabularyMultipleChoicState(multipleChoiceModel: [taskModel]));
       } else {
         emit(const VocabularyErrorState(
             errorMessage: "Failed to generate vocabulary task "));

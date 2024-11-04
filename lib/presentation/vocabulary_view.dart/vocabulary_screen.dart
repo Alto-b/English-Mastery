@@ -1,5 +1,6 @@
 import 'package:english_mastery/application/vocabulary_bloc/vocabulary_bloc.dart';
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/error_correction_widget.dart';
+import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/multiple_choice_widget.dart';
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/sentence_completion_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,9 +28,9 @@ class VocabularyScreen extends StatelessWidget {
       case "Error Correction":
         context.read<VocabularyBloc>().add(VocabualaryErrorCorrectionEvent());
         break;
-      // case "Multiple Choice":
-      //   context.read<VocabularyBloc>().add(VocabualaryMultipleChoiceEvent());
-      //   break;
+      case "Multiple Choice":
+        context.read<VocabularyBloc>().add(VocabularyMultipleChoiceEvent());
+        break;
     }
   }
 
@@ -96,7 +97,10 @@ class VocabularyScreen extends StatelessWidget {
                   return Center(
                     child: Text(state.errorMessage),
                   );
-                } else if (state is VocabularyLoadingState) {return Text("Loading...");
+                } else if (state is VocabularyLoadingState) {
+                  return Center(child: Text("Loading..."));
+                } else if (state is VocabularyMultipleChoicState) {
+                  return MultipleChoiceView(state: state);
                 } else {
                   return const Center(
                     child: CircularProgressIndicator(),

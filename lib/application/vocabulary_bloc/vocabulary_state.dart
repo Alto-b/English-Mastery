@@ -35,3 +35,11 @@ class VocabularyErrorCorrectionState extends VocabularyState {
   @override
   List<Object> get props => [errorCorrectionModel];
 }
+
+class VocabularyMultipleChoicState extends VocabularyState {
+  final List<MultipleChoiceModel> multipleChoiceModel;
+
+  const VocabularyMultipleChoicState({required this.multipleChoiceModel});
+  @override
+  List<Object> get props => [multipleChoiceModel];
+}
