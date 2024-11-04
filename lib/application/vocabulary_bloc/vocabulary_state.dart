@@ -75,3 +75,19 @@ class VocabularyContextCluesState extends VocabularyState {
   @override
   List<Object> get props => [contextCluesModel];
 }
+
+class VocabularyIdiomPhrasesState extends VocabularyState {
+  final List<IdiomPhrasesModel> idiomPhrasesModel;
+
+  VocabularyIdiomPhrasesState({required this.idiomPhrasesModel});
+  @override
+  List<Object> get props => [idiomPhrasesModel];
+}
+
+class VocabularyPhrasalVerbsState extends VocabularyState {
+  final List<PhrasalVerbsModel> phrasalVerbsModel;
+
+  VocabularyPhrasalVerbsState({required this.phrasalVerbsModel});
+  @override
+  List<Object> get props => [phrasalVerbsModel];
+}

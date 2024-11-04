@@ -20,3 +20,7 @@ class VocabularyCollocationEvent extends VocabularyEvent {}
 class VocabularyWordFormEvent extends VocabularyEvent {}
 
 class VocabularyContextCluesEvent extends VocabularyEvent {}
+
+class VocabularyIdiomPhrasesEvent extends VocabularyEvent {}
+
+class VocabularyPhrasalVerbsEvent extends VocabularyEvent {}

@@ -3,7 +3,9 @@ import 'dart:convert';
 import 'package:english_mastery/domain/vocabulary/collocation_model.dart';
 import 'package:english_mastery/domain/vocabulary/context_clues_model.dart';
 import 'package:english_mastery/domain/vocabulary/error_correction_model.dart';
+import 'package:english_mastery/domain/vocabulary/idioms_phrases_model.dart';
 import 'package:english_mastery/domain/vocabulary/multiple_choice_model.dart';
+import 'package:english_mastery/domain/vocabulary/phrasal_verbs_model.dart';
 import 'package:english_mastery/domain/vocabulary/sentence_completion_model.dart';
 import 'package:english_mastery/domain/vocabulary/synonyms_antonyms_model.dart';
 import 'package:english_mastery/domain/vocabulary/word_forms_model.dart';
@@ -203,6 +205,64 @@ class VocabularyRepo {
         final responseData = jsonDecode(response.body);
         print("vocabulary generate body : ${response.body}");
         return ContextCluesModel.fromJson(responseData);
+      } else {
+        if (kDebugMode) {
+          print('Failed to fetch vocabulary data: ${response.statusCode}');
+        }
+        return null;
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error: $e');
+      }
+      return null;
+    }
+  }
+
+//idiom_phrases
+  Future<IdiomPhrasesModel?> generate_idiom_phrases() async {
+    try {
+      final response = await http.get(
+        Uri.parse("${Env.host}${URLs.idioms_phrases}"),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      );
+      print(
+          "vocabulary generate_idiom_phrases() status code : ${response.statusCode}");
+      if (response.statusCode == 200) {
+        final responseData = jsonDecode(response.body);
+        print("vocabulary generate body : ${response.body}");
+        return IdiomPhrasesModel.fromJson(responseData);
+      } else {
+        if (kDebugMode) {
+          print('Failed to fetch vocabulary data: ${response.statusCode}');
+        }
+        return null;
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error: $e');
+      }
+      return null;
+    }
+  }
+
+//phrasal verbs
+  Future<PhrasalVerbsModel?> generate_phrasal_verbs() async {
+    try {
+      final response = await http.get(
+        Uri.parse("${Env.host}${URLs.phrasal_verbs}"),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      );
+      print(
+          "vocabulary generate_phrasal_verbs() status code : ${response.statusCode}");
+      if (response.statusCode == 200) {
+        final responseData = jsonDecode(response.body);
+        print("vocabulary generate body : ${response.body}");
+        return PhrasalVerbsModel.fromJson(responseData);
       } else {
         if (kDebugMode) {
           print('Failed to fetch vocabulary data: ${response.statusCode}');

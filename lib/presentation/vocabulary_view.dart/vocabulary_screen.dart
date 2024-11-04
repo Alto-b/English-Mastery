@@ -2,7 +2,9 @@ import 'package:english_mastery/application/vocabulary_bloc/vocabulary_bloc.dart
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/collocation_widget.dart';
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/context_clues_widget.dart';
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/error_correction_widget.dart';
+import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/idiom_phrases_widget.dart';
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/multiple_choice_widget.dart';
+import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/phrasal_verbs_widget.dart';
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/sentence_completion_widget.dart';
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/synonyms_antonyms_widget.dart';
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/word_form_widget.dart';
@@ -25,7 +27,9 @@ class VocabularyScreen extends StatelessWidget {
     "Synonyms Antonyms",
     "Collocations",
     "Word Forms",
-    "Context Clues"
+    "Context Clues",
+    "Idiom Phrases",
+    "Phrasal Verbs"
   ];
 
   // Method to handle dropdown selection
@@ -53,6 +57,12 @@ class VocabularyScreen extends StatelessWidget {
         break;
       case "Context Clues":
         context.read<VocabularyBloc>().add(VocabularyContextCluesEvent());
+        break;
+      case "Idiom Phrases":
+        context.read<VocabularyBloc>().add(VocabularyIdiomPhrasesEvent());
+        break;
+      case "Phrasal Verbs":
+        context.read<VocabularyBloc>().add(VocabularyPhrasalVerbsEvent());
         break;
     }
   }
@@ -177,6 +187,10 @@ class VocabularyScreen extends StatelessWidget {
                   return WordFormView(state: state);
                 } else if (state is VocabularyContextCluesState) {
                   return ContextCluesView(state: state);
+                } else if (state is VocabularyIdiomPhrasesState) {
+                  return IdiomPhrasesWidget(state: state);
+                } else if (state is VocabularyPhrasalVerbsState) {
+                  return PhrasalVerbsView(state: state);
                 } else {
                   return const Center(
                     child: Text("Select a category to proceed...."),

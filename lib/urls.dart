@@ -25,4 +25,6 @@ class URLs {
   static const collocations = 'vocabulary/collocations/';
   static const word_forms = 'vocabulary/word_forms/';
   static const context_clues = 'vocabulary/context_clues/';
+  static const idioms_phrases = 'vocabulary/idioms_phrases/';
+  static const phrasal_verbs = 'vocabulary/phrasal_verbs/';
 }
