@@ -5,6 +5,7 @@ import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/senten
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/synonyms_antonyms_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 
 class VocabularyScreen extends StatelessWidget {
   VocabularyScreen({super.key});
@@ -92,16 +93,22 @@ class VocabularyScreen extends StatelessWidget {
           Expanded(
             child: BlocBuilder<VocabularyBloc, VocabularyState>(
               builder: (context, state) {
+                if (state is VocabularyErrorState) {
+                  return Center(
+                    child: Column(
+                      children: [
+                        Lottie.asset('assets/loader/404.json'),
+                        Text(state.errorMessage),
+                      ],
+                    ),
+                  );
+                }
                 if (state is VocabularySentenceCompletionState) {
                   return SentenceCompletionView(
                     state: state,
                   );
                 } else if (state is VocabularyErrorCorrectionState) {
                   return ErrorCorrectionView(state: state);
-                } else if (state is VocabularyErrorState) {
-                  return Center(
-                    child: Text(state.errorMessage),
-                  );
                 } else if (state is VocabularyLoadingState) {
                   return Center(child: Text("Loading..."));
                 } else if (state is VocabularyMultipleChoicState) {
