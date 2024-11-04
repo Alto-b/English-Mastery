@@ -2,6 +2,7 @@ import 'package:english_mastery/application/vocabulary_bloc/vocabulary_bloc.dart
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/error_correction_widget.dart';
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/multiple_choice_widget.dart';
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/sentence_completion_widget.dart';
+import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/synonyms_antonyms_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,7 +15,8 @@ class VocabularyScreen extends StatelessWidget {
   final List<String> levels = [
     "Sentence Completion",
     "Error Correction",
-    "Multiple Choice"
+    "Multiple Choice",
+    "Synonyms Antonyms"
   ];
 
   // Method to handle dropdown selection
@@ -30,6 +32,9 @@ class VocabularyScreen extends StatelessWidget {
         break;
       case "Multiple Choice":
         context.read<VocabularyBloc>().add(VocabularyMultipleChoiceEvent());
+        break;
+      case "Synonyms Antonyms":
+        context.read<VocabularyBloc>().add(VocabularySynonymsAntonymsEvent());
         break;
     }
   }
@@ -101,6 +106,8 @@ class VocabularyScreen extends StatelessWidget {
                   return Center(child: Text("Loading..."));
                 } else if (state is VocabularyMultipleChoicState) {
                   return MultipleChoiceView(state: state);
+                } else if (state is VocabularySynonymsAntonymsState) {
+                  return SynonymsAntonymsView(state: state);
                 } else {
                   return const Center(
                     child: CircularProgressIndicator(),

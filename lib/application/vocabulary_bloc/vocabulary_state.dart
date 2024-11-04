@@ -43,3 +43,11 @@ class VocabularyMultipleChoicState extends VocabularyState {
   @override
   List<Object> get props => [multipleChoiceModel];
 }
+
+class VocabularySynonymsAntonymsState extends VocabularyState {
+  final List<SynonymsAntonymsModel> synonymsAntonymsModel;
+
+  const VocabularySynonymsAntonymsState({required this.synonymsAntonymsModel});
+  @override
+  List<Object> get props => [synonymsAntonymsModel];
+}

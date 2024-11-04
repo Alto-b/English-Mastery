@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:english_mastery/domain/vocabulary/error_correction_model.dart';
 import 'package:english_mastery/domain/vocabulary/multiple_choice_model.dart';
 import 'package:english_mastery/domain/vocabulary/sentence_completion_model.dart';
+import 'package:english_mastery/domain/vocabulary/synonyms_antonyms_model.dart';
 import 'package:english_mastery/infrastructure/vocabulary_repo.dart';
 import 'package:equatable/equatable.dart';
 
@@ -19,6 +20,7 @@ class VocabularyBloc extends Bloc<VocabularyEvent, VocabularyState> {
     on<VocabualarySentenceCompletionEvent>(generateSentenceCompletion);
     on<VocabualaryErrorCorrectionEvent>(generateErrorCorrection);
     on<VocabularyMultipleChoiceEvent>(generateMultipleChoice);
+    on<VocabularySynonymsAntonymsEvent>(generateSynonymsAntonyms);
   }
 
   FutureOr<void> generateSentenceCompletion(
@@ -67,6 +69,25 @@ class VocabularyBloc extends Bloc<VocabularyEvent, VocabularyState> {
           await vocabulary_repo.generate_multiple_choice();
       if (taskModel != null) {
         emit(VocabularyMultipleChoicState(multipleChoiceModel: [taskModel]));
+      } else {
+        emit(const VocabularyErrorState(
+            errorMessage: "Failed to generate vocabulary task "));
+      }
+    } catch (e) {
+      emit(VocabularyErrorState(
+          errorMessage: "Failed to generate vocabulary task ${e.toString()}"));
+    }
+  }
+
+  FutureOr<void> generateSynonymsAntonyms(VocabularySynonymsAntonymsEvent event,
+      Emitter<VocabularyState> emit) async {
+    emit(VocabularyLoadingState());
+    try {
+      final SynonymsAntonymsModel? taskModel =
+          await vocabulary_repo.generate_synonyms_antonyms();
+      if (taskModel != null) {
+        emit(VocabularySynonymsAntonymsState(
+            synonymsAntonymsModel: [taskModel]));
       } else {
         emit(const VocabularyErrorState(
             errorMessage: "Failed to generate vocabulary task "));
