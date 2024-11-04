@@ -83,13 +83,32 @@ class _MultipleChoiceViewState extends State<MultipleChoiceView> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "Question ${index + 1}",
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: Colors.blueAccent,
-                          ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Question ${index + 1}",
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                color: Colors.blueAccent,
+                              ),
+                            ), // Toggle button to reveal or hide the answer
+                            TextButton(
+                              onPressed: () {
+                                setState(() {
+                                  _showAnswers[index] = !_showAnswers[index];
+                                });
+                              },
+                              child: Text(
+                                _showAnswers[index]
+                                    ? "Hide Answer"
+                                    : "Show Answer",
+                                style: const TextStyle(
+                                    color: Colors.blueAccent, fontSize: 12),
+                              ),
+                            ),
+                          ],
                         ),
                         const SizedBox(height: 8),
                         Text(
@@ -108,24 +127,13 @@ class _MultipleChoiceViewState extends State<MultipleChoiceView> {
                               option,
                               style: const TextStyle(
                                 fontSize: 16,
-                                color: Colors.black87,
+                                color: Colors.grey,
                               ),
                             ),
                           );
                         }).toList(),
                         const SizedBox(height: 8),
-                        // Toggle button to reveal or hide the answer
-                        TextButton(
-                          onPressed: () {
-                            setState(() {
-                              _showAnswers[index] = !_showAnswers[index];
-                            });
-                          },
-                          child: Text(
-                            _showAnswers[index] ? "Hide Answer" : "Show Answer",
-                            style: const TextStyle(color: Colors.blueAccent),
-                          ),
-                        ),
+
                         // Conditionally show the answer based on _showAnswers[index]
                         if (_showAnswers[index])
                           Text(

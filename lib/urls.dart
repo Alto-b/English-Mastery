@@ -22,4 +22,5 @@ class URLs {
   static const error_correction = 'vocabulary/error_correction/';
   static const multiple_choice = 'vocabulary/multiple_choice/';
   static const synonyms_antonyms = 'vocabulary/synonyms_antonyms/';
+  static const collocations = 'vocabulary/collocations/';
 }

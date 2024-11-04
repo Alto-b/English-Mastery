@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:english_mastery/domain/vocabulary/collocation_model.dart';
 import 'package:english_mastery/domain/vocabulary/error_correction_model.dart';
 import 'package:english_mastery/domain/vocabulary/multiple_choice_model.dart';
 import 'package:english_mastery/domain/vocabulary/sentence_completion_model.dart';
@@ -21,6 +22,7 @@ class VocabularyBloc extends Bloc<VocabularyEvent, VocabularyState> {
     on<VocabualaryErrorCorrectionEvent>(generateErrorCorrection);
     on<VocabularyMultipleChoiceEvent>(generateMultipleChoice);
     on<VocabularySynonymsAntonymsEvent>(generateSynonymsAntonyms);
+    on<VocabularyCollocationEvent>(generateCollocations);
   }
 
   FutureOr<void> generateSentenceCompletion(
@@ -88,6 +90,24 @@ class VocabularyBloc extends Bloc<VocabularyEvent, VocabularyState> {
       if (taskModel != null) {
         emit(VocabularySynonymsAntonymsState(
             synonymsAntonymsModel: [taskModel]));
+      } else {
+        emit(const VocabularyErrorState(
+            errorMessage: "Failed to generate vocabulary task "));
+      }
+    } catch (e) {
+      emit(VocabularyErrorState(
+          errorMessage: "Failed to generate vocabulary task ${e.toString()}"));
+    }
+  }
+
+  FutureOr<void> generateCollocations(
+      VocabularyCollocationEvent event, Emitter<VocabularyState> emit) async {
+    emit(VocabularyLoadingState());
+    try {
+      final CollocationModel? taskModel =
+          await vocabulary_repo.generate_collocations();
+      if (taskModel != null) {
+        emit(VocabularyCollocationState(collocationModel: [taskModel]));
       } else {
         emit(const VocabularyErrorState(
             errorMessage: "Failed to generate vocabulary task "));

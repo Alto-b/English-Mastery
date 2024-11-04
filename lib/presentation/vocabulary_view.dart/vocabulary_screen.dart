@@ -1,4 +1,5 @@
 import 'package:english_mastery/application/vocabulary_bloc/vocabulary_bloc.dart';
+import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/collocation_widget.dart';
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/error_correction_widget.dart';
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/multiple_choice_widget.dart';
 import 'package:english_mastery/presentation/vocabulary_view.dart/widgets/sentence_completion_widget.dart';
@@ -17,7 +18,8 @@ class VocabularyScreen extends StatelessWidget {
     "Sentence Completion",
     "Error Correction",
     "Multiple Choice",
-    "Synonyms Antonyms"
+    "Synonyms Antonyms",
+    "Collocations"
   ];
 
   // Method to handle dropdown selection
@@ -36,6 +38,9 @@ class VocabularyScreen extends StatelessWidget {
         break;
       case "Synonyms Antonyms":
         context.read<VocabularyBloc>().add(VocabularySynonymsAntonymsEvent());
+        break;
+      case "Collocations":
+        context.read<VocabularyBloc>().add(VocabularyCollocationEvent());
         break;
     }
   }
@@ -57,35 +62,46 @@ class VocabularyScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 ),
                 const SizedBox(width: 10),
-                ValueListenableBuilder<String>(
-                  valueListenable: selectedValue,
-                  builder: (context, value, _) {
-                    return DropdownButton<String>(
-                      value: value,
-                      items: levels.map((String level) {
-                        return DropdownMenuItem<String>(
-                          value: level,
-                          child: Text(level),
-                        );
-                      }).toList(),
-                      onChanged: (String? newValue) {
-                        if (newValue != null) {
-                          selectedValue.value = newValue;
-                          handleSelection(context, newValue);
-                        }
-                      },
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                      ),
-                      dropdownColor: Colors.white,
-                      icon: const Icon(Icons.arrow_drop_down),
-                      underline: Container(
-                        height: 1,
-                        color: Colors.grey,
-                      ),
-                    );
-                  },
+                Expanded(
+                  child: ValueListenableBuilder<String>(
+                    valueListenable: selectedValue,
+                    builder: (context, value, _) {
+                      return Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade200,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: Colors.grey.shade400),
+                        ),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            value: value,
+                            items: levels.map((String level) {
+                              return DropdownMenuItem<String>(
+                                value: level,
+                                child: Text(
+                                  level,
+                                  style: const TextStyle(fontSize: 16),
+                                ),
+                              );
+                            }).toList(),
+                            onChanged: (String? newValue) {
+                              if (newValue != null) {
+                                selectedValue.value = newValue;
+                                handleSelection(context, newValue);
+                              }
+                            },
+                            dropdownColor: Colors.white,
+                            icon: const Icon(
+                              Icons.arrow_drop_down,
+                              color: Colors.blueAccent,
+                              size: 28,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ],
             ),
@@ -115,9 +131,11 @@ class VocabularyScreen extends StatelessWidget {
                   return MultipleChoiceView(state: state);
                 } else if (state is VocabularySynonymsAntonymsState) {
                   return SynonymsAntonymsView(state: state);
+                } else if (state is VocabularyCollocationState) {
+                  return CollocationView(state: state);
                 } else {
                   return const Center(
-                    child: CircularProgressIndicator(),
+                    child: Text("Select a category to proceed...."),
                   );
                 }
               },

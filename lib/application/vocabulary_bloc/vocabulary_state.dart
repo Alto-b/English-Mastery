@@ -51,3 +51,11 @@ class VocabularySynonymsAntonymsState extends VocabularyState {
   @override
   List<Object> get props => [synonymsAntonymsModel];
 }
+
+class VocabularyCollocationState extends VocabularyState {
+  final List<CollocationModel> collocationModel;
+
+  VocabularyCollocationState({required this.collocationModel});
+  @override
+  List<Object> get props => [collocationModel];
+}

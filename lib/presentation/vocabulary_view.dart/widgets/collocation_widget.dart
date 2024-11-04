@@ -1,18 +1,18 @@
 import 'package:english_mastery/application/vocabulary_bloc/vocabulary_bloc.dart';
 import 'package:flutter/material.dart';
 
-class SentenceCompletionView extends StatefulWidget {
-  const SentenceCompletionView({
+class CollocationView extends StatefulWidget {
+  const CollocationView({
     super.key,
     required this.state,
   });
-  final VocabularySentenceCompletionState state;
+  final VocabularyCollocationState state;
 
   @override
-  _SentenceCompletionViewState createState() => _SentenceCompletionViewState();
+  _CollocationViewState createState() => _CollocationViewState();
 }
 
-class _SentenceCompletionViewState extends State<SentenceCompletionView> {
+class _CollocationViewState extends State<CollocationView> {
   // This list keeps track of the visibility status of each answer
   late List<bool> _showAnswers;
 
@@ -20,7 +20,7 @@ class _SentenceCompletionViewState extends State<SentenceCompletionView> {
   void initState() {
     super.initState();
     _showAnswers = List.filled(
-        widget.state.sentenceCompletionModel.first.questions.length, false);
+        widget.state.collocationModel.first.questions.length, false);
   }
 
   @override
@@ -32,26 +32,26 @@ class _SentenceCompletionViewState extends State<SentenceCompletionView> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 16),
-            const Text(
-              "Sentence Completion Task",
+            Text(
+              widget.state.collocationModel.first.task ?? "Collocations Task",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.blueAccent,
               ),
             ),
+            // const SizedBox(height: 8),
+            // Text(
+            //   widget.state.collocationModel.first.task ??
+            //       "Sentence Completion Task",
+            //   style: const TextStyle(
+            //     fontSize: 18,
+            //     color: Colors.black87,
+            //   ),
+            // ),
             const SizedBox(height: 8),
             Text(
-              widget.state.sentenceCompletionModel.first.task ??
-                  "Sentence Completion Task",
-              style: const TextStyle(
-                fontSize: 18,
-                color: Colors.black87,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              widget.state.sentenceCompletionModel.first.description ??
+              widget.state.collocationModel.first.description ??
                   "Sentence Completion description",
               style: const TextStyle(
                 fontSize: 16,
@@ -62,8 +62,7 @@ class _SentenceCompletionViewState extends State<SentenceCompletionView> {
             ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount:
-                  widget.state.sentenceCompletionModel.first.questions.length,
+              itemCount: widget.state.collocationModel.first.questions.length,
               itemBuilder: (context, index) {
                 return Card(
                   margin: const EdgeInsets.symmetric(vertical: 8),
@@ -86,7 +85,7 @@ class _SentenceCompletionViewState extends State<SentenceCompletionView> {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          widget.state.sentenceCompletionModel.first
+                          widget.state.collocationModel.first
                                   .questions[index] ??
                               "Question text",
                           style: const TextStyle(
@@ -110,7 +109,7 @@ class _SentenceCompletionViewState extends State<SentenceCompletionView> {
                         // Conditionally show the answer based on _showAnswers[index]
                         if (_showAnswers[index])
                           Text(
-                            "Answer: ${widget.state.sentenceCompletionModel.first.answers[index] ?? "Answer text"}",
+                            "Answer: ${widget.state.collocationModel.first.answers[index] ?? "Answer text"}",
                             style: const TextStyle(
                               fontSize: 16,
                               color: Colors.green,

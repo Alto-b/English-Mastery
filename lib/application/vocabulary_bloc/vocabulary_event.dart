@@ -14,3 +14,5 @@ class VocabualaryErrorCorrectionEvent extends VocabularyEvent {}
 class VocabularyMultipleChoiceEvent extends VocabularyEvent {}
 
 class VocabularySynonymsAntonymsEvent extends VocabularyEvent {}
+
+class VocabularyCollocationEvent extends VocabularyEvent {}

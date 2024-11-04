@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:english_mastery/domain/vocabulary/collocation_model.dart';
 import 'package:english_mastery/domain/vocabulary/error_correction_model.dart';
 import 'package:english_mastery/domain/vocabulary/multiple_choice_model.dart';
 import 'package:english_mastery/domain/vocabulary/sentence_completion_model.dart';
@@ -113,6 +114,35 @@ class VocabularyRepo {
         final responseData = jsonDecode(response.body);
         print("vocabulary generate body : ${response.body}");
         return SynonymsAntonymsModel.fromJson(responseData);
+      } else {
+        if (kDebugMode) {
+          print('Failed to fetch vocabulary data: ${response.statusCode}');
+        }
+        return null;
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error: $e');
+      }
+      return null;
+    }
+  }
+
+//collocations
+  Future<CollocationModel?> generate_collocations() async {
+    try {
+      final response = await http.get(
+        Uri.parse("${Env.host}${URLs.collocations}"),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      );
+      print(
+          "vocabulary generate_collocations() status code : ${response.statusCode}");
+      if (response.statusCode == 200) {
+        final responseData = jsonDecode(response.body);
+        print("vocabulary generate body : ${response.body}");
+        return CollocationModel.fromJson(responseData);
       } else {
         if (kDebugMode) {
           print('Failed to fetch vocabulary data: ${response.statusCode}');
