@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:english_mastery/domain/word_of_the_day_model.dart';
 import 'package:english_mastery/presentation/home_view/widgets/home_search_widget.dart';
+import 'package:english_mastery/presentation/reading_view/reading1/reading1view.dart';
 import 'package:english_mastery/presentation/speaking_view/speaking_view.dart';
 import 'package:english_mastery/presentation/writing_task_view/writing1.dart';
 import 'package:english_mastery/presentation/writing_task_view/writing2.dart';
@@ -20,7 +21,11 @@ class IELTSTestTabView extends StatelessWidget {
         "icon": Icons.edit,
         "onClick": () => showWritingBottomSheet()
       },
-      {"title": "Reading", "icon": Icons.book, "onClick": () => onClickTest(1)},
+      {
+        "title": "Reading",
+        "icon": Icons.book,
+        "onClick": () => Get.to(() => const Reading1Screen())
+      },
       {
         "title": "Listening",
         "icon": Icons.headphones,
