@@ -1,4 +1,4 @@
-import 'package:english_mastery/presentation/result_view/writing_result_view.dart';
+import 'package:english_mastery/presentation/writing_task_view/writing_result_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
