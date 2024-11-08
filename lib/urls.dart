@@ -29,4 +29,6 @@ class URLs {
   static const phrasal_verbs = 'vocabulary/phrasal_verbs/';
 //Reading
   static const reading1 = 'reading/generated_json';
+//grammar
+  static const past_time = 'grammar/past_time/';
 }

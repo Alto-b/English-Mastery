@@ -1,4 +1,5 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:english_mastery/application/grammar_bloc/grammar_bloc.dart';
 import 'package:english_mastery/application/home_bloc/home_bloc.dart';
 import 'package:english_mastery/application/profile_setup_bloc/profile_setup_bloc.dart';
 import 'package:english_mastery/application/reading_bloc/reading_bloc.dart';
@@ -7,10 +8,12 @@ import 'package:english_mastery/application/speaking_question_bloc/speaking_ques
 import 'package:english_mastery/application/splash_bloc/splash_bloc.dart';
 import 'package:english_mastery/application/vocabulary_bloc/vocabulary_bloc.dart';
 import 'package:english_mastery/application/writing_bloc/writing_bloc.dart';
+import 'package:english_mastery/infrastructure/grammar_repo.dart';
 import 'package:english_mastery/infrastructure/reading_repo.dart';
 import 'package:english_mastery/infrastructure/speaking_repo.dart';
 import 'package:english_mastery/infrastructure/vocabulary_repo.dart';
 import 'package:english_mastery/infrastructure/writing_repo.dart';
+import 'package:english_mastery/presentation/grammar_view/grammar_screen.dart';
 import 'package:english_mastery/presentation/splash_view/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -64,6 +67,10 @@ class MyApp extends StatelessWidget {
             BlocProvider(
               create: (context) => ReadingBloc(Reading1Repo()),
             ),
+            BlocProvider(
+              create: (context) => GrammarBloc(GrammarRepo()),
+              child: GrammarScreen(),
+            )
           ],
           child: GetMaterialApp(
             title: 'English Mastery',

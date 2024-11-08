@@ -1,4 +1,5 @@
 import 'package:english_mastery/domain/word_of_the_day_model.dart';
+import 'package:english_mastery/presentation/grammar_view/grammar_screen.dart';
 import 'package:english_mastery/presentation/home_view/widgets/word_of_the_day.dart';
 import 'package:english_mastery/presentation/vocabulary_view.dart/vocabulary_screen.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,9 @@ class GeneralTestTabView extends StatelessWidget {
               title: "Grammar",
               subtitle: "Explore Grammar Tasks",
               leadingIcon: Icons.book_online_rounded,
-              onTap: () {},
+              onTap: () {
+                Get.to(GrammarScreen());
+              },
             ),
             GeneralSubListTile(
               title: "Vocabulary",

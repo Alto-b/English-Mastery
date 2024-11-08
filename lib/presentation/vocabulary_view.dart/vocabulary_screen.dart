@@ -76,30 +76,51 @@ class VocabularyScreen extends StatelessWidget {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.symmetric(
+                vertical: 16.0,
+                horizontal: 24.0), // Adjusted padding for better alignment
             child: BlocBuilder<VocabularyBloc, VocabularyState>(
               builder: (context, state) {
                 if (state is VocabularyLoadingState) {
                   return SizedBox.shrink();
                 }
                 return Row(
+                  mainAxisAlignment:
+                      MainAxisAlignment.spaceBetween, // Improve alignment
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const Text(
                       "Select category:",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color:
+                              Colors.black87), // Improved font weight & color
                     ),
-                    const SizedBox(width: 10),
+                    const SizedBox(width: 12),
                     Expanded(
                       child: ValueListenableBuilder<String>(
                         valueListenable: selectedValue,
                         builder: (context, value, _) {
                           return Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 4), // Add vertical padding
                             decoration: BoxDecoration(
-                              color: Colors.grey.shade200,
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(color: Colors.grey.shade400),
+                              color: Colors.blue
+                                  .shade50, // Softer background color for focus
+                              borderRadius: BorderRadius.circular(
+                                  12), // Slightly more rounded corners
+                              border: Border.all(
+                                  color: Colors.blueAccent
+                                      .shade100), // Accent color for border
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black12,
+                                  blurRadius: 4,
+                                  offset: Offset(0, 2),
+                                ), // Add shadow for a subtle depth effect
+                              ],
                             ),
                             child: DropdownButtonHideUnderline(
                               child: DropdownButton<String>(
@@ -109,7 +130,10 @@ class VocabularyScreen extends StatelessWidget {
                                     value: level,
                                     child: Text(
                                       level,
-                                      style: const TextStyle(fontSize: 16),
+                                      style: const TextStyle(
+                                          fontSize: 16,
+                                          color: Colors
+                                              .black87), // Darker text for readability
                                     ),
                                   );
                                 }).toList(),
