@@ -1,4 +1,5 @@
 import 'package:english_mastery/application/grammar_bloc/grammar_bloc.dart';
+import 'package:english_mastery/presentation/grammar_view/widgets/articles_quantifiers_widget.dart';
 import 'package:english_mastery/presentation/grammar_view/widgets/future_time_widget.dart';
 import 'package:english_mastery/presentation/grammar_view/widgets/past_time_widget.dart';
 
@@ -39,6 +40,9 @@ class GrammarScreen extends StatelessWidget {
         break;
       case "Future Time":
         context.read<GrammarBloc>().add(GrammarFutureTimeEvent());
+        break;
+      case "Articles Quantifiers":
+        context.read<GrammarBloc>().add(GrammarArticlesQuantifiersEvent());
         break;
     }
   }
@@ -149,6 +153,7 @@ class GrammarScreen extends StatelessWidget {
                   return Center(
                     child: CupertinoActivityIndicator(
                       color: Colors.orange,
+                      radius: 25,
                     ),
                   );
                 }
@@ -166,6 +171,9 @@ class GrammarScreen extends StatelessWidget {
                   return FutureTimeWidget(
                     state: state,
                   );
+                }
+                if (state is GrammarArticlesQuantifiersState) {
+                  return ArticlesQuantifiersWidget(state: state);
                 }
                 return Center(
                   child: Text("Select an option from the dropdown"),

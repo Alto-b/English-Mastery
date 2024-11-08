@@ -32,4 +32,5 @@ class URLs {
 //grammar
   static const past_time = 'grammar/past_time/';
   static const future_time = 'grammar/future_time/';
+  static const articles_quantifiers = 'grammar/articles_quantifiers/';
 }

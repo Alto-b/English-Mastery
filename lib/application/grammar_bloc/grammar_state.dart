@@ -34,3 +34,11 @@ class GrammarFutureTimeState extends GrammarState {
   @override
   List<Object> get props => [futureTimeModel];
 }
+
+class GrammarArticlesQuantifiersState extends GrammarState {
+  final List<ArticlesQuantifiersModel> articlesQuantifiersModel;
+
+  GrammarArticlesQuantifiersState({required this.articlesQuantifiersModel});
+  @override
+  List<Object> get props => [articlesQuantifiersModel];
+}
