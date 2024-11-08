@@ -2,18 +2,18 @@ import 'package:english_mastery/application/grammar_bloc/grammar_bloc.dart';
 import 'package:english_mastery/application/vocabulary_bloc/vocabulary_bloc.dart';
 import 'package:flutter/material.dart';
 
-class PastTimeWidget extends StatefulWidget {
-  const PastTimeWidget({
+class FutureTimeWidget extends StatefulWidget {
+  const FutureTimeWidget({
     super.key,
     required this.state,
   });
-  final GrammarPastTimeState state;
+  final GrammarFutureTimeState state;
 
   @override
-  _PastTimeWidgetState createState() => _PastTimeWidgetState();
+  _FutureTimeWidgetState createState() => _FutureTimeWidgetState();
 }
 
-class _PastTimeWidgetState extends State<PastTimeWidget> {
+class _FutureTimeWidgetState extends State<FutureTimeWidget> {
   // This list keeps track of the visibility status of each answer
   late List<bool> _showAnswers;
 
@@ -21,7 +21,7 @@ class _PastTimeWidgetState extends State<PastTimeWidget> {
   void initState() {
     super.initState();
     _showAnswers =
-        List.filled(widget.state.pastTimeModel.first.questions.length, false);
+        List.filled(widget.state.futureTimeModel.first.questions.length, false);
   }
 
   @override
@@ -34,7 +34,7 @@ class _PastTimeWidgetState extends State<PastTimeWidget> {
           children: [
             const SizedBox(height: 16),
             Text(
-              widget.state.pastTimeModel.first.task ?? "Past time task",
+              widget.state.futureTimeModel.first.task ?? "Future time task",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -52,8 +52,8 @@ class _PastTimeWidgetState extends State<PastTimeWidget> {
             // ),
             const SizedBox(height: 8),
             Text(
-              widget.state.pastTimeModel.first.description ??
-                  "past time description",
+              widget.state.futureTimeModel.first.description ??
+                  "Future time description",
               style: const TextStyle(
                 fontSize: 16,
                 color: Colors.black54,
@@ -63,7 +63,7 @@ class _PastTimeWidgetState extends State<PastTimeWidget> {
             ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: widget.state.pastTimeModel.first.questions.length,
+              itemCount: widget.state.futureTimeModel.first.questions.length,
               itemBuilder: (context, index) {
                 return Card(
                   margin: const EdgeInsets.symmetric(vertical: 8),
@@ -86,7 +86,7 @@ class _PastTimeWidgetState extends State<PastTimeWidget> {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          widget.state.pastTimeModel.first.questions[index] ??
+                          widget.state.futureTimeModel.first.questions[index] ??
                               "Question text",
                           style: const TextStyle(
                             fontSize: 16,
@@ -109,7 +109,7 @@ class _PastTimeWidgetState extends State<PastTimeWidget> {
                         // Conditionally show the answer based on _showAnswers[index]
                         if (_showAnswers[index])
                           Text(
-                            "${widget.state.pastTimeModel.first.answers[index] ?? "Answer text"}",
+                            "${widget.state.futureTimeModel.first.answers[index] ?? "Answer text"}",
                             style: const TextStyle(
                               fontSize: 16,
                               color: Colors.green,

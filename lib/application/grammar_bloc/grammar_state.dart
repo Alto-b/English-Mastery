@@ -26,3 +26,11 @@ class GrammarPastTimeState extends GrammarState {
   @override
   List<Object> get props => [pastTimeModel];
 }
+
+class GrammarFutureTimeState extends GrammarState {
+  final List<FutureTimeModel> futureTimeModel;
+
+  GrammarFutureTimeState({required this.futureTimeModel});
+  @override
+  List<Object> get props => [futureTimeModel];
+}

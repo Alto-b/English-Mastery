@@ -1,4 +1,5 @@
 import 'package:english_mastery/application/grammar_bloc/grammar_bloc.dart';
+import 'package:english_mastery/presentation/grammar_view/widgets/future_time_widget.dart';
 import 'package:english_mastery/presentation/grammar_view/widgets/past_time_widget.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -35,6 +36,9 @@ class GrammarScreen extends StatelessWidget {
     switch (selection) {
       case "Past Time":
         context.read<GrammarBloc>().add(GrammarPastTimeEvent());
+        break;
+      case "Future Time":
+        context.read<GrammarBloc>().add(GrammarFutureTimeEvent());
         break;
     }
   }
@@ -154,7 +158,12 @@ class GrammarScreen extends StatelessWidget {
                   );
                 }
                 if (state is GrammarPastTimeState) {
-                  return PastaTimeWidget(
+                  return PastTimeWidget(
+                    state: state,
+                  );
+                }
+                if (state is GrammarFutureTimeState) {
+                  return FutureTimeWidget(
                     state: state,
                   );
                 }

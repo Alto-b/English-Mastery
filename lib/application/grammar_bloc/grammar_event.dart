@@ -8,3 +8,5 @@ sealed class GrammarEvent extends Equatable {
 }
 
 class GrammarPastTimeEvent extends GrammarEvent {}
+
+class GrammarFutureTimeEvent extends GrammarEvent {}

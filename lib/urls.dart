@@ -31,4 +31,5 @@ class URLs {
   static const reading1 = 'reading/generated_json';
 //grammar
   static const past_time = 'grammar/past_time/';
+  static const future_time = 'grammar/future_time/';
 }
