@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:english_mastery/domain/grammar/articles_quantifiers_model.dart';
+import 'package:english_mastery/domain/grammar/comparitives_superlatives_model.dart';
 import 'package:english_mastery/domain/grammar/future_time_model.dart';
 import 'package:english_mastery/domain/grammar/past_time_model.dart';
 import 'package:english_mastery/infrastructure/grammar_repo.dart';
@@ -16,6 +17,8 @@ class GrammarBloc extends Bloc<GrammarEvent, GrammarState> {
     on<GrammarPastTimeEvent>(generate_past_time);
     on<GrammarFutureTimeEvent>(generate_future_time);
     on<GrammarArticlesQuantifiersEvent>(generate_articles_quantifiers);
+    on<GrammarComparitivesSuperlativesEvent>(
+        generate_comparitives_superlatives);
   }
 
   FutureOr<void> generate_past_time(
@@ -27,11 +30,11 @@ class GrammarBloc extends Bloc<GrammarEvent, GrammarState> {
         emit(GrammarPastTimeState(pastTimeModel: [taskModel]));
       } else {
         emit(GrammarErrorState(
-            errorMessage: "Failed to generate vocabulary task "));
+            errorMessage: "Failed to generate grammar task "));
       }
     } catch (e) {
       emit(GrammarErrorState(
-          errorMessage: "Failed to generate vocabulary task ${e.toString()}"));
+          errorMessage: "Failed to generate grammar task ${e.toString()}"));
     }
   }
 
@@ -45,11 +48,11 @@ class GrammarBloc extends Bloc<GrammarEvent, GrammarState> {
         emit(GrammarFutureTimeState(futureTimeModel: [taskModel]));
       } else {
         emit(GrammarErrorState(
-            errorMessage: "Failed to generate vocabulary task "));
+            errorMessage: "Failed to generate grammar task "));
       }
     } catch (e) {
       emit(GrammarErrorState(
-          errorMessage: "Failed to generate vocabulary task ${e.toString()}"));
+          errorMessage: "Failed to generate grammar task ${e.toString()}"));
     }
   }
 
@@ -64,11 +67,31 @@ class GrammarBloc extends Bloc<GrammarEvent, GrammarState> {
             articlesQuantifiersModel: [taskModel]));
       } else {
         emit(GrammarErrorState(
-            errorMessage: "Failed to generate vocabulary task "));
+            errorMessage: "Failed to generate grammar task "));
       }
     } catch (e) {
       emit(GrammarErrorState(
-          errorMessage: "Failed to generate vocabulary task ${e.toString()}"));
+          errorMessage: "Failed to generate grammar task ${e.toString()}"));
+    }
+  }
+
+  FutureOr<void> generate_comparitives_superlatives(
+      GrammarComparitivesSuperlativesEvent event,
+      Emitter<GrammarState> emit) async {
+    emit(GrammarLoadingState());
+    try {
+      final ComparativesSuperlativesModel? taskModel =
+          await grammer_repo.generate_comparitives_superlatives();
+      if (taskModel != null) {
+        emit(GrammarComparitivesSuperlativesState(
+            comparitivesSuperlativesModel: [taskModel]));
+      } else {
+        emit(GrammarErrorState(
+            errorMessage: "Failed to generate grammar task "));
+      }
+    } catch (e) {
+      emit(GrammarErrorState(
+          errorMessage: "Failed to generate grammar task ${e.toString()}"));
     }
   }
 }

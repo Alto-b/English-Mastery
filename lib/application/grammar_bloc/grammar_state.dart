@@ -42,3 +42,12 @@ class GrammarArticlesQuantifiersState extends GrammarState {
   @override
   List<Object> get props => [articlesQuantifiersModel];
 }
+
+class GrammarComparitivesSuperlativesState extends GrammarState {
+  final List<ComparativesSuperlativesModel> comparitivesSuperlativesModel;
+
+  GrammarComparitivesSuperlativesState(
+      {required this.comparitivesSuperlativesModel});
+  @override
+  List<Object> get props => [comparitivesSuperlativesModel];
+}

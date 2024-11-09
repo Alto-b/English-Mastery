@@ -1,5 +1,6 @@
 import 'package:english_mastery/application/grammar_bloc/grammar_bloc.dart';
 import 'package:english_mastery/presentation/grammar_view/widgets/articles_quantifiers_widget.dart';
+import 'package:english_mastery/presentation/grammar_view/widgets/comparitives_superlatives_widget.dart';
 import 'package:english_mastery/presentation/grammar_view/widgets/future_time_widget.dart';
 import 'package:english_mastery/presentation/grammar_view/widgets/past_time_widget.dart';
 
@@ -17,19 +18,19 @@ class GrammarScreen extends StatelessWidget {
     "Past Time",
     "Future Time",
     "Articles Quantifiers",
-    "Conditionals",
+    // "Conditionals",
     "Comparatives Superlatives",
-    "Modals",
-    "Passive Causative",
-    "Compound Future",
-    "Quantity",
-    "Passive Structures",
-    "Uses of it",
-    "Relative Clauses",
-    "Modals Speculation",
-    "Talking About Ability",
-    "Emphatic Forms",
-    "WH Words"
+    // "Modals",
+    // "Passive Causative",
+    // "Compound Future",
+    // "Quantity",
+    // "Passive Structures",
+    // "Uses of it",
+    // "Relative Clauses",
+    // "Modals Speculation",
+    // "Talking About Ability",
+    // "Emphatic Forms",
+    // "WH Words"
   ];
 
   // Method to handle dropdown selection
@@ -43,6 +44,9 @@ class GrammarScreen extends StatelessWidget {
         break;
       case "Articles Quantifiers":
         context.read<GrammarBloc>().add(GrammarArticlesQuantifiersEvent());
+        break;
+      case "Comparatives Superlatives":
+        context.read<GrammarBloc>().add(GrammarComparitivesSuperlativesEvent());
         break;
     }
   }
@@ -174,6 +178,9 @@ class GrammarScreen extends StatelessWidget {
                 }
                 if (state is GrammarArticlesQuantifiersState) {
                   return ArticlesQuantifiersWidget(state: state);
+                }
+                if (state is GrammarComparitivesSuperlativesState) {
+                  return ComparitivesSuperlativesWidget(state: state);
                 }
                 return Center(
                   child: Text("Select an option from the dropdown"),

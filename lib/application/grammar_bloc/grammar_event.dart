@@ -12,3 +12,5 @@ class GrammarPastTimeEvent extends GrammarEvent {}
 class GrammarFutureTimeEvent extends GrammarEvent {}
 
 class GrammarArticlesQuantifiersEvent extends GrammarEvent {}
+
+class GrammarComparitivesSuperlativesEvent extends GrammarEvent {}
