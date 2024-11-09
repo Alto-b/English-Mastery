@@ -3,6 +3,7 @@ import 'package:english_mastery/presentation/grammar_view/widgets/articles_quant
 import 'package:english_mastery/presentation/grammar_view/widgets/comparitives_superlatives_widget.dart';
 import 'package:english_mastery/presentation/grammar_view/widgets/future_time_widget.dart';
 import 'package:english_mastery/presentation/grammar_view/widgets/modals_widget.dart';
+import 'package:english_mastery/presentation/grammar_view/widgets/passive_causative_model.dart';
 import 'package:english_mastery/presentation/grammar_view/widgets/past_time_widget.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -21,8 +22,8 @@ class GrammarScreen extends StatelessWidget {
     "Articles Quantifiers",
     // "Conditionals",
     "Comparatives Superlatives",
-    "Modals",
-    // "Passive Causative",
+    "Modal Verbs",
+    "Passive Causative",
     // "Compound Future",
     // "Quantity",
     // "Passive Structures",
@@ -49,8 +50,11 @@ class GrammarScreen extends StatelessWidget {
       case "Comparatives Superlatives":
         context.read<GrammarBloc>().add(GrammarComparitivesSuperlativesEvent());
         break;
-      case "Modals":
+      case "Modal Verbs":
         context.read<GrammarBloc>().add(GrammarModalsEvent());
+        break;
+      case "Passive Causative":
+        context.read<GrammarBloc>().add(GrammarPassiveCausative());
         break;
     }
   }
@@ -188,6 +192,9 @@ class GrammarScreen extends StatelessWidget {
                 }
                 if (state is GrammarModalsState) {
                   return ModalsWidget(state: state);
+                }
+                if (state is GrammarPassiveCausativeState) {
+                  return PassiveCausativeWidget(state: state);
                 }
                 return Center(
                   child: Text("Select an option from the dropdown"),

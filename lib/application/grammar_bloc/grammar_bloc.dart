@@ -5,6 +5,7 @@ import 'package:english_mastery/domain/grammar/articles_quantifiers_model.dart';
 import 'package:english_mastery/domain/grammar/comparitives_superlatives_model.dart';
 import 'package:english_mastery/domain/grammar/future_time_model.dart';
 import 'package:english_mastery/domain/grammar/modals.dart';
+import 'package:english_mastery/domain/grammar/passive_causative_model.dart';
 import 'package:english_mastery/domain/grammar/past_time_model.dart';
 import 'package:english_mastery/infrastructure/grammar_repo.dart';
 import 'package:equatable/equatable.dart';
@@ -21,6 +22,7 @@ class GrammarBloc extends Bloc<GrammarEvent, GrammarState> {
     on<GrammarComparitivesSuperlativesEvent>(
         generate_comparitives_superlatives);
     on<GrammarModalsEvent>(generate_modals);
+    on<GrammarPassiveCausative>(generate_passive_causative);
   }
 
   FutureOr<void> generate_past_time(
@@ -104,6 +106,24 @@ class GrammarBloc extends Bloc<GrammarEvent, GrammarState> {
       final ModalsModel? taskModel = await grammer_repo.generate_modals();
       if (taskModel != null) {
         emit(GrammarModalsState(modalsModel: [taskModel]));
+      } else {
+        emit(GrammarErrorState(
+            errorMessage: "Failed to generate grammar task "));
+      }
+    } catch (e) {
+      emit(GrammarErrorState(
+          errorMessage: "Failed to generate grammar task ${e.toString()}"));
+    }
+  }
+
+  FutureOr<void> generate_passive_causative(
+      GrammarPassiveCausative event, Emitter<GrammarState> emit) async {
+    emit(GrammarLoadingState());
+    try {
+      final PassiveCausativeModel? taskModel =
+          await grammer_repo.generate_passive_causative();
+      if (taskModel != null) {
+        emit(GrammarPassiveCausativeState(passiveCausativeModel: [taskModel]));
       } else {
         emit(GrammarErrorState(
             errorMessage: "Failed to generate grammar task "));

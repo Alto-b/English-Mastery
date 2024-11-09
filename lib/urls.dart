@@ -35,4 +35,5 @@ class URLs {
   static const articles_quantifiers = 'grammar/articles_quantifiers/';
   static const comparitives_superlatives = 'grammar/comparatives_superlatives/';
   static const modals = 'grammar/modals/';
+  static const passive_causative = 'grammar/passive_causative/';
 }

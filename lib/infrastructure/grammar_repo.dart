@@ -4,6 +4,7 @@ import 'package:english_mastery/domain/grammar/articles_quantifiers_model.dart';
 import 'package:english_mastery/domain/grammar/comparitives_superlatives_model.dart';
 import 'package:english_mastery/domain/grammar/future_time_model.dart';
 import 'package:english_mastery/domain/grammar/modals.dart';
+import 'package:english_mastery/domain/grammar/passive_causative_model.dart';
 import 'package:english_mastery/domain/grammar/past_time_model.dart';
 import 'package:english_mastery/env.dart';
 import 'package:english_mastery/urls.dart';
@@ -137,6 +138,34 @@ class GrammarRepo {
         final responseData = jsonDecode(response.body);
         print("grammar generate body : ${response.body}");
         return ModalsModel.fromJson(responseData);
+      } else {
+        if (kDebugMode) {
+          print('Failed to fetch grammar data: ${response.statusCode}');
+        }
+        return null;
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error: $e');
+      }
+      return null;
+    }
+  }
+
+  Future<PassiveCausativeModel?> generate_passive_causative() async {
+    try {
+      final response = await http.get(
+        Uri.parse("${Env.host}${URLs.passive_causative}"),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      );
+      print(
+          "grammar generate_passive_causative() status code : ${response.statusCode}");
+      if (response.statusCode == 200) {
+        final responseData = jsonDecode(response.body);
+        print("grammar generate body : ${response.body}");
+        return PassiveCausativeModel.fromJson(responseData);
       } else {
         if (kDebugMode) {
           print('Failed to fetch grammar data: ${response.statusCode}');

@@ -59,3 +59,11 @@ class GrammarModalsState extends GrammarState {
   @override
   List<Object> get props => [modalsModel];
 }
+
+class GrammarPassiveCausativeState extends GrammarState {
+  final List<PassiveCausativeModel> passiveCausativeModel;
+
+  GrammarPassiveCausativeState({required this.passiveCausativeModel});
+  @override
+  List<Object> get props => [passiveCausativeModel];
+}
