@@ -51,3 +51,11 @@ class GrammarComparitivesSuperlativesState extends GrammarState {
   @override
   List<Object> get props => [comparitivesSuperlativesModel];
 }
+
+class GrammarModalsState extends GrammarState {
+  final List<ModalsModel> modalsModel;
+
+  GrammarModalsState({required this.modalsModel});
+  @override
+  List<Object> get props => [modalsModel];
+}

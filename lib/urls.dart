@@ -34,4 +34,5 @@ class URLs {
   static const future_time = 'grammar/future_time/';
   static const articles_quantifiers = 'grammar/articles_quantifiers/';
   static const comparitives_superlatives = 'grammar/comparatives_superlatives/';
+  static const modals = 'grammar/modals/';
 }

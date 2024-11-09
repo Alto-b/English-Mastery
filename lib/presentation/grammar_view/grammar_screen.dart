@@ -2,6 +2,7 @@ import 'package:english_mastery/application/grammar_bloc/grammar_bloc.dart';
 import 'package:english_mastery/presentation/grammar_view/widgets/articles_quantifiers_widget.dart';
 import 'package:english_mastery/presentation/grammar_view/widgets/comparitives_superlatives_widget.dart';
 import 'package:english_mastery/presentation/grammar_view/widgets/future_time_widget.dart';
+import 'package:english_mastery/presentation/grammar_view/widgets/modals_widget.dart';
 import 'package:english_mastery/presentation/grammar_view/widgets/past_time_widget.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -20,7 +21,7 @@ class GrammarScreen extends StatelessWidget {
     "Articles Quantifiers",
     // "Conditionals",
     "Comparatives Superlatives",
-    // "Modals",
+    "Modals",
     // "Passive Causative",
     // "Compound Future",
     // "Quantity",
@@ -47,6 +48,9 @@ class GrammarScreen extends StatelessWidget {
         break;
       case "Comparatives Superlatives":
         context.read<GrammarBloc>().add(GrammarComparitivesSuperlativesEvent());
+        break;
+      case "Modals":
+        context.read<GrammarBloc>().add(GrammarModalsEvent());
         break;
     }
   }
@@ -181,6 +185,9 @@ class GrammarScreen extends StatelessWidget {
                 }
                 if (state is GrammarComparitivesSuperlativesState) {
                   return ComparitivesSuperlativesWidget(state: state);
+                }
+                if (state is GrammarModalsState) {
+                  return ModalsWidget(state: state);
                 }
                 return Center(
                   child: Text("Select an option from the dropdown"),
