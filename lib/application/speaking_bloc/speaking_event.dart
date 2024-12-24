@@ -1,7 +1,7 @@
 part of 'speaking_bloc.dart';
 
 // Ensure this is an abstract class, meant to be extended by specific events.
-class SpeakingEvent extends Equatable {
+abstract class SpeakingEvent extends Equatable {
   const SpeakingEvent();
 
   @override
@@ -33,4 +33,15 @@ class GenerateSpeakingQuestion extends SpeakingEvent {
   const GenerateSpeakingQuestion({required this.question});
   @override
   List<Object> get props => [question];
+}
+
+class SpeakingCheckAudioEvent extends SpeakingEvent {
+  final String question;
+  final String audioPath;
+  const SpeakingCheckAudioEvent({
+    required this.question,
+    required this.audioPath,
+  });
+  @override
+  List<Object> get props => [question, audioPath];
 }

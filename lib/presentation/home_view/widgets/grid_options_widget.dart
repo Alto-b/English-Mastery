@@ -54,7 +54,7 @@ class GridOptionsContainer extends StatelessWidget {
                 tileColor: Colors.amber,
                 title: Text('Text to Speech ${index + 1}'),
                 subtitle: const Text("aaaaaaaaaaaa"),
-                leading: const Icon(Icons.abc),
+                // leading: const Icon(Icons.abc),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
                 onTap: () {},
                 shape: ContinuousRectangleBorder(

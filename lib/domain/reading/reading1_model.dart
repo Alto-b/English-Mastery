@@ -27,7 +27,7 @@ class Reading1Model {
         "status": status,
         "title": title,
         "passage": passage,
-        "questions": questions.map((x) => x?.toJson()).toList(),
+        "questions": questions.map((x) => x.toJson()).toList(),
       };
 }
 

@@ -4,7 +4,6 @@ import 'package:english_mastery/presentation/reading_view/reading1/widgets/readi
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gap/gap.dart';
 
 class Reading1Screen extends StatelessWidget {
   const Reading1Screen({super.key});
@@ -14,13 +13,13 @@ class Reading1Screen extends StatelessWidget {
     // context.read<ReadingBloc>().add(loadReadingEvent());
     return Scaffold(
       appBar: AppBar(
-        title: Text("Reading"),
+        title: const Text("Reading"),
         actions: [
-          IconButton(
-              onPressed: () {
-                context.read<ReadingBloc>().add(loadReadingEvent());
-              },
-              icon: Icon(Icons.refresh))
+          // IconButton(
+          //     onPressed: () {
+          //       context.read<ReadingBloc>().add(loadReadingEvent());
+          //     },
+          //     icon: const Icon(Icons.refresh))
         ],
       ),
       body: BlocBuilder<ReadingBloc, ReadingState>(
@@ -32,7 +31,7 @@ class Reading1Screen extends StatelessWidget {
             ));
           }
           if (state is ReadingLoadingState) {
-            return Center(
+            return const Center(
                 child: CupertinoActivityIndicator(
               color: Colors.blue,
             ));
@@ -42,7 +41,7 @@ class Reading1Screen extends StatelessWidget {
               state: state,
             );
           }
-          return ReadingLoadingFailedWidget();
+          return const ReadingLoadingFailedWidget();
         },
       ),
     );

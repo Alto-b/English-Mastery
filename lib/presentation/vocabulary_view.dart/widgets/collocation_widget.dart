@@ -34,7 +34,7 @@ class _CollocationViewState extends State<CollocationView> {
             const SizedBox(height: 16),
             Text(
               widget.state.collocationModel.first.task ?? "Collocations Task",
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.blueAccent,

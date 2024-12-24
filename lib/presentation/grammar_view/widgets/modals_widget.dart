@@ -1,5 +1,4 @@
 import 'package:english_mastery/application/grammar_bloc/grammar_bloc.dart';
-import 'package:english_mastery/application/vocabulary_bloc/vocabulary_bloc.dart';
 import 'package:flutter/material.dart';
 
 class ModalsWidget extends StatefulWidget {
@@ -35,7 +34,7 @@ class _ModalsWidgetState extends State<ModalsWidget> {
             const SizedBox(height: 16),
             Text(
               widget.state.modalsModel.first.task ?? "Modals task",
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.blueAccent,

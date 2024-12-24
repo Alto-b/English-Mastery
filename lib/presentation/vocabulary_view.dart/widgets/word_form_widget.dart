@@ -34,7 +34,7 @@ class _WordFormViewState extends State<WordFormView> {
             const SizedBox(height: 16),
             Text(
               widget.state.wordFormsModel.first.task ?? "Word Form Task",
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.blueAccent,

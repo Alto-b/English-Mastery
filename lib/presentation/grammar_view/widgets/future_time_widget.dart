@@ -1,5 +1,4 @@
 import 'package:english_mastery/application/grammar_bloc/grammar_bloc.dart';
-import 'package:english_mastery/application/vocabulary_bloc/vocabulary_bloc.dart';
 import 'package:flutter/material.dart';
 
 class FutureTimeWidget extends StatefulWidget {
@@ -35,7 +34,7 @@ class _FutureTimeWidgetState extends State<FutureTimeWidget> {
             const SizedBox(height: 16),
             Text(
               widget.state.futureTimeModel.first.task ?? "Future time task",
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.blueAccent,

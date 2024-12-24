@@ -38,7 +38,7 @@ class _ComparitivesSuperlativesWidgetState
             Text(
               widget.state.comparitivesSuperlativesModel.first.task ??
                   "Articles Quantifiers task",
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.blueAccent,
@@ -114,7 +114,7 @@ class _ComparitivesSuperlativesWidgetState
                         // Conditionally show the answer based on _showAnswers[index]
                         if (_showAnswers[index])
                           Text(
-                            "${widget.state.comparitivesSuperlativesModel.first.answers[index] ?? "Answer text"}",
+                            widget.state.comparitivesSuperlativesModel.first.answers[index] ?? "Answer text",
                             style: const TextStyle(
                               fontSize: 16,
                               color: Colors.green,

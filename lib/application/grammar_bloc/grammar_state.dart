@@ -14,7 +14,7 @@ class GrammarLoadingState extends GrammarState {}
 class GrammarErrorState extends GrammarState {
   final String errorMessage;
 
-  GrammarErrorState({required this.errorMessage});
+  const GrammarErrorState({required this.errorMessage});
   @override
   List<Object> get props => [errorMessage];
 }
@@ -22,7 +22,7 @@ class GrammarErrorState extends GrammarState {
 class GrammarPastTimeState extends GrammarState {
   final List<PastTimeModel> pastTimeModel;
 
-  GrammarPastTimeState({required this.pastTimeModel});
+  const GrammarPastTimeState({required this.pastTimeModel});
   @override
   List<Object> get props => [pastTimeModel];
 }
@@ -30,7 +30,7 @@ class GrammarPastTimeState extends GrammarState {
 class GrammarFutureTimeState extends GrammarState {
   final List<FutureTimeModel> futureTimeModel;
 
-  GrammarFutureTimeState({required this.futureTimeModel});
+  const GrammarFutureTimeState({required this.futureTimeModel});
   @override
   List<Object> get props => [futureTimeModel];
 }
@@ -38,7 +38,7 @@ class GrammarFutureTimeState extends GrammarState {
 class GrammarArticlesQuantifiersState extends GrammarState {
   final List<ArticlesQuantifiersModel> articlesQuantifiersModel;
 
-  GrammarArticlesQuantifiersState({required this.articlesQuantifiersModel});
+  const GrammarArticlesQuantifiersState({required this.articlesQuantifiersModel});
   @override
   List<Object> get props => [articlesQuantifiersModel];
 }
@@ -46,7 +46,7 @@ class GrammarArticlesQuantifiersState extends GrammarState {
 class GrammarComparitivesSuperlativesState extends GrammarState {
   final List<ComparativesSuperlativesModel> comparitivesSuperlativesModel;
 
-  GrammarComparitivesSuperlativesState(
+  const GrammarComparitivesSuperlativesState(
       {required this.comparitivesSuperlativesModel});
   @override
   List<Object> get props => [comparitivesSuperlativesModel];
@@ -55,7 +55,7 @@ class GrammarComparitivesSuperlativesState extends GrammarState {
 class GrammarModalsState extends GrammarState {
   final List<ModalsModel> modalsModel;
 
-  GrammarModalsState({required this.modalsModel});
+  const GrammarModalsState({required this.modalsModel});
   @override
   List<Object> get props => [modalsModel];
 }
@@ -63,7 +63,7 @@ class GrammarModalsState extends GrammarState {
 class GrammarPassiveCausativeState extends GrammarState {
   final List<PassiveCausativeModel> passiveCausativeModel;
 
-  GrammarPassiveCausativeState({required this.passiveCausativeModel});
+  const GrammarPassiveCausativeState({required this.passiveCausativeModel});
   @override
   List<Object> get props => [passiveCausativeModel];
 }

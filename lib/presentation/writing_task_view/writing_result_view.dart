@@ -185,7 +185,7 @@ class WritingResultView extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.error_outline, color: Colors.red, size: 40),
+                  const Icon(Icons.error_outline, color: Colors.red, size: 40),
                   const Gap(10),
                   Text(state.message,
                       style: const TextStyle(color: Colors.red, fontSize: 16)),

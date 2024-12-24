@@ -86,7 +86,7 @@ class _IdiomPhrasesWidgetState extends State<IdiomPhrasesWidget> {
             const SizedBox(height: 16),
             Text(
               widget.state.idiomPhrasesModel.first.task ?? "Context Clues Task",
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.blueAccent,
@@ -136,7 +136,7 @@ class _IdiomPhrasesWidgetState extends State<IdiomPhrasesWidget> {
                           widget.state.idiomPhrasesModel.first.questions[index]
                               .options
                               .toString(),
-                          style: TextStyle(color: Colors.grey),
+                          style: const TextStyle(color: Colors.grey),
                         ),
                         // parseAndHighlight(widget.state.idiomPhrasesModel.first
                         //         .questions[index].options

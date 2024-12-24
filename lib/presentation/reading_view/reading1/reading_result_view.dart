@@ -1,5 +1,4 @@
 import 'package:english_mastery/application/reading_bloc/reading_bloc.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,7 +15,7 @@ class ReadingResultView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Reading Result")),
+      appBar: AppBar(title: const Text("Reading Result")),
       body: BlocBuilder<ReadingBloc, ReadingState>(
         builder: (context, state) {
           if (state is ReadingScoreGenerated) {
@@ -27,7 +26,7 @@ class ReadingResultView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.emoji_events_outlined,
                       color: Colors.blueAccent,
                       size: 60,
@@ -35,7 +34,7 @@ class ReadingResultView extends StatelessWidget {
                     const SizedBox(height: 20),
                     Text(
                       "Your Reading Practice Scores",
-                      style: Theme.of(context).textTheme.headline5?.copyWith(
+                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                             fontWeight: FontWeight.bold,
                             color: Colors.black87,
                           ),
@@ -63,7 +62,7 @@ class ReadingResultView extends StatelessWidget {
               ),
             );
           }
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         },
@@ -74,11 +73,11 @@ class ReadingResultView extends StatelessWidget {
 
 class ScoreTile extends StatelessWidget {
   const ScoreTile({
-    Key? key,
+    super.key,
     required this.label,
     required this.score,
     required this.icon,
-  }) : super(key: key);
+  });
 
   final String label;
   final int score;
@@ -93,7 +92,7 @@ class ScoreTile extends StatelessWidget {
         Expanded(
           child: Text(
             label,
-            style: Theme.of(context).textTheme.subtitle1?.copyWith(
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.w600,
                   color: Colors.black87,
                 ),
@@ -101,7 +100,7 @@ class ScoreTile extends StatelessWidget {
         ),
         Text(
           "${score.toString()} %",
-          style: Theme.of(context).textTheme.subtitle1?.copyWith(
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
                 color: Colors.blueAccent,
               ),

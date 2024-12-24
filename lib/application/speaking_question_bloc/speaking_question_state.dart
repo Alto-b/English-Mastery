@@ -17,10 +17,10 @@ class Speaking2QuestionSuccessState extends SpeakingQuestionState {
   List<Object> get props => [speakingGenerateTaskModel];
 }
 
-class Speaking2QuestionSuccessErrorState extends SpeakingQuestionState {
+class Speaking2QuestionErrorState extends SpeakingQuestionState {
   final String message;
 
-  Speaking2QuestionSuccessErrorState({required this.message});
+  Speaking2QuestionErrorState({required this.message});
   @override
   List<Object> get props => [message];
 }

@@ -16,6 +16,8 @@ class URLs {
 
   //speaking
   static const speaking2_generate_task = 'speaking2/generate_question/';
+  static const speaking2_check_audio = 'speaking2/check_audio/';
+  static const speaking2_generate_feedback_audio = 'speaking2/generate_audio/';
 
   //vocabulary
   static const sentence_completion = 'vocabulary/sentence_completion/';

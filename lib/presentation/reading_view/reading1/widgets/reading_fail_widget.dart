@@ -38,7 +38,7 @@ class _ReadingLoadingFailedWidgetState
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -58,14 +58,14 @@ class _ReadingLoadingFailedWidgetState
           //   icon: Icon(Icons.refresh),
           //   label: Text("Retry"),
           // ),
-          const SizedBox(height: 20),
+          SizedBox(height: 20),
           CupertinoActivityIndicator(),
-          const SizedBox(height: 20),
+          SizedBox(height: 20),
           Text(
             "Failed to load reading task.",
             style: TextStyle(fontSize: 18, color: Colors.black54),
           ),
-          const SizedBox(height: 20),
+          SizedBox(height: 20),
           Text(
             "Retrying in a few seconds...",
             style: TextStyle(fontSize: 14, color: Colors.grey),

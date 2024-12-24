@@ -1,5 +1,4 @@
 import 'package:english_mastery/application/grammar_bloc/grammar_bloc.dart';
-import 'package:english_mastery/application/vocabulary_bloc/vocabulary_bloc.dart';
 import 'package:flutter/material.dart';
 
 class PassiveCausativeWidget extends StatefulWidget {
@@ -36,7 +35,7 @@ class _PassiveCausativeModelState extends State<PassiveCausativeWidget> {
             Text(
               widget.state.passiveCausativeModel.first.task ??
                   "Passive Causative task",
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.blueAccent,

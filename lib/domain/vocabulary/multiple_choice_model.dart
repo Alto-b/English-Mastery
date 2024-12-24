@@ -28,7 +28,7 @@ class MultipleChoiceModel {
         "description": description,
         "questions": Map.from(questions)
             .map((k, v) => MapEntry<String, dynamic>(k, v?.toJson())),
-        "answers": answers.map((x) => x?.toJson()).toList(),
+        "answers": answers.map((x) => x.toJson()).toList(),
       };
 }
 

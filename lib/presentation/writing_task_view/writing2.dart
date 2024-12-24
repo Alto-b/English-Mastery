@@ -17,13 +17,13 @@ class Writing2View extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
         actions: [
-          IconButton(
-              onPressed: () {
-                Get.to(() => WritingAnswerView(
-                      pageTitle: title,
-                    ));
-              },
-              icon: const Icon(Icons.abc))
+          // IconButton(
+          //     onPressed: () {
+          //       Get.to(() => WritingAnswerView(
+          //             pageTitle: title,
+          //           ));
+          //     },
+          //     icon: const Icon(Icons.abc))
         ],
       ),
       body: BlocBuilder<WritingBloc, WritingState>(

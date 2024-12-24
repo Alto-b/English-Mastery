@@ -3,9 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:english_mastery/domain/reading/reading1_model.dart';
 import 'package:english_mastery/infrastructure/reading_repo.dart';
-import 'package:english_mastery/presentation/reading_view/reading1/reading_result_view.dart';
 import 'package:equatable/equatable.dart';
-import 'package:get/get.dart';
 
 part 'reading_event.dart';
 part 'reading_state.dart';
@@ -30,9 +28,9 @@ class ReadingBloc extends Bloc<ReadingEvent, ReadingState> {
         emit(ReadingLoadingSuccessState(reading1TaskModel: [taskModel]));
       } else if (taskModel != null &&
           (taskModel.status == null || taskModel.status != "success")) {
-        emit(Reading422State(errorMessage: "Couldn't load the task"));
+        emit(const Reading422State(errorMessage: "Couldn't load the task"));
       } else {
-        emit(Reading1ErrorState(errorMessage: "Failed to load reading task."));
+        emit(const Reading1ErrorState(errorMessage: "Failed to load reading task."));
       }
     } catch (e) {
       emit(Reading1ErrorState(errorMessage: "Failed to load reading task. $e"));

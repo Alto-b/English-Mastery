@@ -25,7 +25,7 @@ class calculateReadingScoreEvent extends ReadingEvent {
   final List<String> correctMultipleChoiceAnswers;
   final List<String> correctCompleteTheSentenceAnswers;
 
-  calculateReadingScoreEvent({
+  const calculateReadingScoreEvent({
     required this.userTrueFalseAnswers,
     required this.userMultipleChoiceAnswers,
     required this.userCompleteTheSentenceAnswers,

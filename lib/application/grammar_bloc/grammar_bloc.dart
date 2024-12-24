@@ -33,7 +33,7 @@ class GrammarBloc extends Bloc<GrammarEvent, GrammarState> {
       if (taskModel != null) {
         emit(GrammarPastTimeState(pastTimeModel: [taskModel]));
       } else {
-        emit(GrammarErrorState(
+        emit(const GrammarErrorState(
             errorMessage: "Failed to generate grammar task "));
       }
     } catch (e) {
@@ -51,7 +51,7 @@ class GrammarBloc extends Bloc<GrammarEvent, GrammarState> {
       if (taskModel != null) {
         emit(GrammarFutureTimeState(futureTimeModel: [taskModel]));
       } else {
-        emit(GrammarErrorState(
+        emit(const GrammarErrorState(
             errorMessage: "Failed to generate grammar task "));
       }
     } catch (e) {
@@ -70,7 +70,7 @@ class GrammarBloc extends Bloc<GrammarEvent, GrammarState> {
         emit(GrammarArticlesQuantifiersState(
             articlesQuantifiersModel: [taskModel]));
       } else {
-        emit(GrammarErrorState(
+        emit(const GrammarErrorState(
             errorMessage: "Failed to generate grammar task "));
       }
     } catch (e) {
@@ -90,7 +90,7 @@ class GrammarBloc extends Bloc<GrammarEvent, GrammarState> {
         emit(GrammarComparitivesSuperlativesState(
             comparitivesSuperlativesModel: [taskModel]));
       } else {
-        emit(GrammarErrorState(
+        emit(const GrammarErrorState(
             errorMessage: "Failed to generate grammar task "));
       }
     } catch (e) {
@@ -107,7 +107,7 @@ class GrammarBloc extends Bloc<GrammarEvent, GrammarState> {
       if (taskModel != null) {
         emit(GrammarModalsState(modalsModel: [taskModel]));
       } else {
-        emit(GrammarErrorState(
+        emit(const GrammarErrorState(
             errorMessage: "Failed to generate grammar task "));
       }
     } catch (e) {
@@ -125,7 +125,7 @@ class GrammarBloc extends Bloc<GrammarEvent, GrammarState> {
       if (taskModel != null) {
         emit(GrammarPassiveCausativeState(passiveCausativeModel: [taskModel]));
       } else {
-        emit(GrammarErrorState(
+        emit(const GrammarErrorState(
             errorMessage: "Failed to generate grammar task "));
       }
     } catch (e) {

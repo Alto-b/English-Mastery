@@ -36,7 +36,7 @@ class _ArticlesQuantifiersWidgetState extends State<ArticlesQuantifiersWidget> {
             Text(
               widget.state.articlesQuantifiersModel.first.task ??
                   "Articles Quantifiers task",
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.blueAccent,

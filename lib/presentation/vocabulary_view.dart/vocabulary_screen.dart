@@ -82,7 +82,7 @@ class VocabularyScreen extends StatelessWidget {
             child: BlocBuilder<VocabularyBloc, VocabularyState>(
               builder: (context, state) {
                 if (state is VocabularyLoadingState) {
-                  return SizedBox.shrink();
+                  return const SizedBox.shrink();
                 }
                 return Row(
                   mainAxisAlignment:
@@ -114,7 +114,7 @@ class VocabularyScreen extends StatelessWidget {
                               border: Border.all(
                                   color: Colors.blueAccent
                                       .shade100), // Accent color for border
-                              boxShadow: [
+                              boxShadow: const [
                                 BoxShadow(
                                   color: Colors.black12,
                                   blurRadius: 4,
@@ -173,7 +173,7 @@ class VocabularyScreen extends StatelessWidget {
                         ),
                         Text(
                           state.errorMessage,
-                          style: TextStyle(color: Colors.grey),
+                          style: const TextStyle(color: Colors.grey),
                         ),
                       ],
                     ),

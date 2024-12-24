@@ -1,6 +1,5 @@
 import 'package:english_mastery/application/reading_bloc/reading_bloc.dart';
 import 'package:english_mastery/presentation/reading_view/reading1/reading_result_view.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -96,7 +95,7 @@ class _ReadingViewWidgetState extends State<ReadingViewWidget> {
         correctMultipleChoiceAnswers: correct_multipleChoiceAnswers,
         correctCompleteTheSentenceAnswers: correct_completethesentenceanswers));
 
-    Get.off(ReadingResultView());
+    Get.off(const ReadingResultView());
   }
 
   @override
@@ -137,7 +136,7 @@ class _ReadingViewWidgetState extends State<ReadingViewWidget> {
                             "${widget.state.reading1TaskModel.first.title}",
                             style: Theme.of(context)
                                 .textTheme
-                                .headline6
+                                .titleLarge
                                 ?.copyWith(fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 16),
@@ -145,7 +144,7 @@ class _ReadingViewWidgetState extends State<ReadingViewWidget> {
                             "${widget.state.reading1TaskModel.first.passage}",
                             style: Theme.of(context)
                                 .textTheme
-                                .bodyText1
+                                .bodyLarge
                                 ?.copyWith(height: 1.5),
                           ),
                           Gap(screenHeight / 10)
@@ -169,7 +168,7 @@ class _ReadingViewWidgetState extends State<ReadingViewWidget> {
                             widget.state.reading1TaskModel[0].questions[0]
                                     .questionType ??
                                 "True/False",
-                            style: Theme.of(context).textTheme.headline6,
+                            style: Theme.of(context).textTheme.titleLarge,
                           ),
                           const Gap(10),
                           ListView.builder(
@@ -200,7 +199,7 @@ class _ReadingViewWidgetState extends State<ReadingViewWidget> {
                                                 .questions[0].questions[index],
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .bodyText1,
+                                                .bodyLarge,
                                           ),
                                           const SizedBox(height: 10),
                                           Row(
@@ -266,7 +265,7 @@ class _ReadingViewWidgetState extends State<ReadingViewWidget> {
                             widget.state.reading1TaskModel[0].questions[1]
                                     .questionType ??
                                 "Multiple Choice",
-                            style: Theme.of(context).textTheme.headline6,
+                            style: Theme.of(context).textTheme.titleLarge,
                           ),
                           const Gap(10),
                           ListView.builder(
@@ -297,7 +296,7 @@ class _ReadingViewWidgetState extends State<ReadingViewWidget> {
                                                 .questions[1].questions[index],
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .bodyText1,
+                                                .bodyLarge,
                                           ),
                                           const SizedBox(height: 10),
                                           DropdownButton<String>(
@@ -344,7 +343,7 @@ class _ReadingViewWidgetState extends State<ReadingViewWidget> {
                             widget.state.reading1TaskModel[0].questions[2]
                                     .questionType ??
                                 "Complete the sentence",
-                            style: Theme.of(context).textTheme.headline6,
+                            style: Theme.of(context).textTheme.titleLarge,
                           ),
                           const Gap(10),
                           ListView.builder(
@@ -375,7 +374,7 @@ class _ReadingViewWidgetState extends State<ReadingViewWidget> {
                                                 .questions[2].questions[index],
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .bodyText1,
+                                                .bodyLarge,
                                           ),
                                           const SizedBox(height: 10),
                                           DropdownButton<String>(

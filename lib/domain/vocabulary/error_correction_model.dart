@@ -28,7 +28,7 @@ class ErrorCorrectionModel {
         "description": description,
         "questions":
             Map.from(questions).map((k, v) => MapEntry<String, dynamic>(k, v)),
-        "answers": answers.map((x) => x?.toJson()).toList(),
+        "answers": answers.map((x) => x.toJson()).toList(),
       };
 }
 

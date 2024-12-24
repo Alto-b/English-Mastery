@@ -14,7 +14,7 @@ class ReadingLoadingState extends ReadingState {}
 class ReadingLoadingSuccessState extends ReadingState {
   final List<Reading1Model> reading1TaskModel;
 
-  ReadingLoadingSuccessState({required this.reading1TaskModel});
+  const ReadingLoadingSuccessState({required this.reading1TaskModel});
   @override
   List<Object> get props => [reading1TaskModel];
 }
@@ -22,7 +22,7 @@ class ReadingLoadingSuccessState extends ReadingState {
 class Reading422State extends ReadingState {
   final String errorMessage;
 
-  Reading422State({required this.errorMessage});
+  const Reading422State({required this.errorMessage});
   @override
   List<Object> get props => [errorMessage];
 }
@@ -30,7 +30,7 @@ class Reading422State extends ReadingState {
 class Reading1ErrorState extends ReadingState {
   final String errorMessage;
 
-  Reading1ErrorState({required this.errorMessage});
+  const Reading1ErrorState({required this.errorMessage});
   @override
   List<Object> get props => [errorMessage];
 }
@@ -42,7 +42,7 @@ class ReadingScoreGenerated extends ReadingState {
   final int multipleChoiceScore;
   final int completeTheSentenceScore;
 
-  ReadingScoreGenerated(
+  const ReadingScoreGenerated(
       {required this.trueFalseScore,
       required this.multipleChoiceScore,
       required this.completeTheSentenceScore});

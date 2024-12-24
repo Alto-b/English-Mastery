@@ -86,7 +86,7 @@ class _ContextCluesViewState extends State<ContextCluesView> {
             const SizedBox(height: 16),
             Text(
               widget.state.contextCluesModel.first.task ?? "Context Clues Task",
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.blueAccent,

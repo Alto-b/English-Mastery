@@ -25,11 +25,10 @@ class SpeakingQuestionBloc
         emit(Speaking2QuestionSuccessState(
             speakingGenerateTaskModel: [taskModel]));
       } else {
-        emit(Speaking2QuestionSuccessErrorState(
-            message: "Failed to fetch speaking task"));
+        emit(Speaking2QuestionErrorState(message: "Error generating question"));
       }
     } catch (e) {
-      emit(Speaking2QuestionSuccessErrorState(message: "Error:$e"));
+      emit(Speaking2QuestionErrorState(message: "Error:$e"));
     }
   }
 }

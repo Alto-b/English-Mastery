@@ -1,6 +1,5 @@
 import 'package:english_mastery/application/vocabulary_bloc/vocabulary_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class MultipleChoiceView extends StatefulWidget {
   const MultipleChoiceView({
@@ -131,7 +130,7 @@ class _MultipleChoiceViewState extends State<MultipleChoiceView> {
                               ),
                             ),
                           );
-                        }).toList(),
+                        }),
                         const SizedBox(height: 8),
 
                         // Conditionally show the answer based on _showAnswers[index]

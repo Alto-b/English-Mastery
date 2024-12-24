@@ -148,9 +148,9 @@ class _SynonymsAntonymsViewState extends State<SynonymsAntonymsView> {
                                     color: Colors.blueAccent,
                                   ),
                                 ),
-                                Gap(10),
+                                const Gap(10),
                                 Text(
-                                  "(${answerType}):",
+                                  "($answerType):",
                                   style: const TextStyle(
                                     // fontWeight: FontWeight.bold,
                                     fontSize: 12,
@@ -190,7 +190,7 @@ class _SynonymsAntonymsViewState extends State<SynonymsAntonymsView> {
                               ),
                             ),
                           );
-                        }).toList(),
+                        }),
                         const SizedBox(height: 8),
                         // TextButton(
                         //   onPressed: () {

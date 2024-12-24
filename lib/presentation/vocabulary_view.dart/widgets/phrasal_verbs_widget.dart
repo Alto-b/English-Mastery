@@ -86,7 +86,7 @@ class _PhrasalVerbsViewState extends State<PhrasalVerbsView> {
             const SizedBox(height: 16),
             Text(
               widget.state.phrasalVerbsModel.first.task ?? "Context Clues Task",
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.blueAccent,
@@ -136,7 +136,7 @@ class _PhrasalVerbsViewState extends State<PhrasalVerbsView> {
                           widget.state.phrasalVerbsModel.first.questions[index]
                               .options
                               .toString(),
-                          style: TextStyle(color: Colors.grey),
+                          style: const TextStyle(color: Colors.grey),
                         ),
                         // parseAndHighlight(widget.state.idiomPhrasesModel.first
                         //         .questions[index].options

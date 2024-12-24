@@ -11,7 +11,7 @@ class SpeakingQuestionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // context.read<SpeakingQuestionBloc>().add(Speaking2GenerateQuestionEvent());
+    context.read<SpeakingQuestionBloc>().add(Speaking2GenerateQuestionEvent());
     return BlocBuilder<SpeakingQuestionBloc, SpeakingQuestionState>(
       builder: (context, state) {
         if (state is Speaking2QuestionSuccessState) {
@@ -29,11 +29,11 @@ class SpeakingQuestionWidget extends StatelessWidget {
                       fontSize: 20, fontWeight: FontWeight.w700),
                 ),
                 const Gap(25),
-                const GenerateTaskButton(),
+                const GenerateTaskButton(button_text: "Regenerate task"),
               ],
             ),
           );
-        } else if (state is Speaking2QuestionSuccessErrorState) {
+        } else if (state is Speaking2QuestionErrorState) {
           return Expanded(
             child: Center(
               child: Padding(
@@ -60,25 +60,9 @@ class SpeakingQuestionWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                CircularProgressIndicator(color: Colors.amber), Gap(10),
-                GenerateTaskButton(),
-                // ElevatedButton.icon(
-                //   style: ButtonStyle(
-                //     elevation: const MaterialStatePropertyAll(5),
-                //     shape: MaterialStatePropertyAll(
-                //       ContinuousRectangleBorder(
-                //         borderRadius: BorderRadius.circular(20),
-                //       ),
-                //     ),
-                //   ),
-                //   onPressed: () {
-                //     context
-                //         .read<SpeakingQuestionBloc>()
-                //         .add(Speaking2GenerateQuestionEvent());
-                //   },
-                //   icon: const Icon(Icons.autorenew),
-                //   label: const Text("Generate Question"),
-                // ),
+                CircularProgressIndicator(color: Colors.amber),
+                Gap(10),
+                GenerateTaskButton(button_text: "Generate task"),
               ],
             ),
           ),
@@ -91,15 +75,17 @@ class SpeakingQuestionWidget extends StatelessWidget {
 class GenerateTaskButton extends StatelessWidget {
   const GenerateTaskButton({
     super.key,
+    required this.button_text,
   });
+  final String button_text;
 
   @override
   Widget build(BuildContext context) {
     return EasyButton(
       type: EasyButtonType.elevated,
-      idleStateWidget: const Text(
-        'Generate task',
-        style: TextStyle(
+      idleStateWidget: Text(
+        button_text,
+        style: const TextStyle(
           color: Colors.white,
         ),
       ),

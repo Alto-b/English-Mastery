@@ -112,7 +112,7 @@ class GrammarScreen extends StatelessWidget {
                               border: Border.all(
                                   color: Colors.blueAccent
                                       .shade100), // Accent color for border
-                              boxShadow: [
+                              boxShadow: const [
                                 BoxShadow(
                                   color: Colors.black12,
                                   blurRadius: 4,
@@ -162,7 +162,7 @@ class GrammarScreen extends StatelessWidget {
             child: BlocBuilder<GrammarBloc, GrammarState>(
               builder: (context, state) {
                 if (state is GrammarLoadingState) {
-                  return Center(
+                  return const Center(
                     child: CupertinoActivityIndicator(
                       color: Colors.orange,
                       radius: 25,
@@ -196,7 +196,7 @@ class GrammarScreen extends StatelessWidget {
                 if (state is GrammarPassiveCausativeState) {
                   return PassiveCausativeWidget(state: state);
                 }
-                return Center(
+                return const Center(
                   child: Text("Select an option from the dropdown"),
                 );
               },

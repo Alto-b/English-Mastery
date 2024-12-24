@@ -23,7 +23,7 @@ class IdiomPhrasesModel {
     Map<String, dynamic> toJson() => {
         "task": task,
         "description": description,
-        "questions": questions.map((x) => x?.toJson()).toList(),
+        "questions": questions.map((x) => x.toJson()).toList(),
         "answers": answers.map((x) => x).toList(),
     };
 

@@ -55,7 +55,7 @@ class VocabularySynonymsAntonymsState extends VocabularyState {
 class VocabularyCollocationState extends VocabularyState {
   final List<CollocationModel> collocationModel;
 
-  VocabularyCollocationState({required this.collocationModel});
+  const VocabularyCollocationState({required this.collocationModel});
   @override
   List<Object> get props => [collocationModel];
 }
@@ -63,7 +63,7 @@ class VocabularyCollocationState extends VocabularyState {
 class VocabularyWordFormsState extends VocabularyState {
   final List<WordFormsModel> wordFormsModel;
 
-  VocabularyWordFormsState({required this.wordFormsModel});
+  const VocabularyWordFormsState({required this.wordFormsModel});
   @override
   List<Object> get props => [wordFormsModel];
 }
@@ -71,7 +71,7 @@ class VocabularyWordFormsState extends VocabularyState {
 class VocabularyContextCluesState extends VocabularyState {
   final List<ContextCluesModel> contextCluesModel;
 
-  VocabularyContextCluesState({required this.contextCluesModel});
+  const VocabularyContextCluesState({required this.contextCluesModel});
   @override
   List<Object> get props => [contextCluesModel];
 }
@@ -79,7 +79,7 @@ class VocabularyContextCluesState extends VocabularyState {
 class VocabularyIdiomPhrasesState extends VocabularyState {
   final List<IdiomPhrasesModel> idiomPhrasesModel;
 
-  VocabularyIdiomPhrasesState({required this.idiomPhrasesModel});
+  const VocabularyIdiomPhrasesState({required this.idiomPhrasesModel});
   @override
   List<Object> get props => [idiomPhrasesModel];
 }
@@ -87,7 +87,7 @@ class VocabularyIdiomPhrasesState extends VocabularyState {
 class VocabularyPhrasalVerbsState extends VocabularyState {
   final List<PhrasalVerbsModel> phrasalVerbsModel;
 
-  VocabularyPhrasalVerbsState({required this.phrasalVerbsModel});
+  const VocabularyPhrasalVerbsState({required this.phrasalVerbsModel});
   @override
   List<Object> get props => [phrasalVerbsModel];
 }
